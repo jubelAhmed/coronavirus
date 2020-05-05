@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from .filters import OrganisationFilter
 from django.urls import reverse_lazy
+from django.http.response import HttpResponseRedirect
 
 
 # Create your views here.
@@ -76,7 +77,7 @@ def orgnaziation_redirect(request):
         
     else:
         request.session['org_have'] = False
-        return reverse_lazy('self_org')
+        return HttpResponseRedirect(reverse("orgApplication:self_org"))
 
 @login_required
 def get_org_profile_list(request):
@@ -92,6 +93,12 @@ def get_org_profile_list(request):
         
         }
         return render(request, 'orgApp/org_menu_list.html', context)
+    else:
+        return render(request, 'orgApp/org_menu_list.html', context = {
+        'organisation_list': False,
+        'nbar':'org',        
+        
+        })
     
 @login_required
 def organizationProfile(request,pk):
@@ -145,7 +152,7 @@ def self_org(request: HttpRequest):
                 details = orgForm.save(commit=False)
                 details.organisation = new_org
                 details.save()
-                return HttpResponsePermanentRedirect(reverse("orgApplication:org"))
+                return HttpResponseRedirect(reverse("orgApplication:org"))
         # context['errorMsg'] = 'Not new user'
         return render(request, 'orgApp/selfOrg.html', context)
 

@@ -181,6 +181,6 @@ MESSAGE_LEVEL = 25
 
 AUTH_USER_MODEL = "userApp.UserProfile"
 
-LOGIN_REDIRECT_URL = '/org/'
+LOGIN_REDIRECT_URL = '/org/orgadmin/'
 LOGOUT_REDIRECT_URL = '/org/'
 
