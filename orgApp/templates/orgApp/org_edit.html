@@ -1,0 +1,115 @@
+{% extends 'orgApp/org_profile_parent.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block org_profile %}
+
+
+
+<div class="container">
+    <div class="jumbotron bg-white text-success shadow">
+       
+        {% if errorMsg %}<p>{{ errorMsg }}</p>{% endif %}
+        {% if orgForm and org_detail_form %}
+        <form action="" id="organisationForm" enctype="multipart/form-data" data-districts-url="{% url 'orgApplication:ajax_load_districts' %}" data-thana-url="{% url 'orgApplication:ajax_load_thana' %}" method="post" novalidate>
+            {% csrf_token %}
+            {{ orgForm.name|as_crispy_field }}
+            {{ orgForm.about|as_crispy_field }}
+            <div class="row">
+                <div class="col-sm-4">
+                    {{ orgForm.division|as_crispy_field }}
+                </div>
+                <div class="col-sm-4">
+                    {{ orgForm.district|as_crispy_field }}
+                </div>
+                <div class="col-sm-4">
+                    {{ orgForm.thana|as_crispy_field }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    {{ orgForm.email|as_crispy_field }}
+                </div>
+                <div class="col-sm-6">
+                    {{ orgForm.phone|as_crispy_field }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    {{ org_detail_form.facebook_url|as_crispy_field }}
+                </div>
+                <div class="col-sm-4">
+                    {{ org_detail_form.website_url|as_crispy_field }}
+                </div>
+                <div class="col-sm-4">
+                    {{ org_detail_form.youtube_url|as_crispy_field }}
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    {{ org_detail_form.image|as_crispy_field }}
+                </div>
+                <div class="col-sm-4">
+                    {{ org_detail_form.logo|as_crispy_field }}
+                </div>
+                <div class="col-sm-4">
+
+                </div>
+            </div>
+
+            <div class="text-right">
+                <button class="btn btn-lg btn-danger  mt-3 " style="padding-left: 100px;padding-right: 100px;"
+                    type="submit" value="রেজিস্ট্রেশন">সংরক্ষণ করুন</button>
+            </div>
+
+        </form>
+
+        {% endif %}
+       
+    </div>
+</div>
+    
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script>
+    $("#id_division").change(function () {
+      var url = $("#organisationForm").attr("data-districts-url");  // get the url of the `load_cities` view
+      var cityId = $(this).val();  // get the selected country ID from the HTML input
+      event.preventDefault();
+      $.ajax({                       // initialize an AJAX request
+        url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+        data: {
+          'city': cityId       // add the country id to the GET parameters
+        },
+        success: function (data) {   // `data` is the return of the `load_cities` view function
+          $("#id_district").html(data);
+         // replace the contents of the city input with the data that came from the server
+        }
+      });
+
+    });
+
+    // load thana ajax req
+
+    $("#id_district").change(function () {
+        var url = $("#organisationForm").attr("data-thana-url");  // get the url of the `load_cities` view
+        var districtId = $(this).val();  // get the selected country ID from the HTML input
+        event.preventDefault();
+        $.ajax({                       // initialize an AJAX request
+          url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+          data: {
+            'district': districtId       // add the country id to the GET parameters
+          },
+          success: function (data) {   // `data` is the return of the `load_cities` view function
+            $("#id_thana").html(data);
+            // replace the contents of the city input with the data that came from the server
+          }
+        });
+  
+      });
+    
+  </script>
+
+  {% endblock org_profile %}

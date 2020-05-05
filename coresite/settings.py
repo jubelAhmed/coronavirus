@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     'orgApp',
     'mediumeditor',
     'import_export',
+    'django_filters',
+
   
 ]
 

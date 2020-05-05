@@ -2,7 +2,7 @@
 {% load static %}
 <html lang="en">
 <head>
-    <title> ত্রান বিতরন </title>
+    <title> {% block title %} ত্রান বিতরন {% endblock title %} </title>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -58,7 +58,7 @@
 
                                 {% if user.is_authenticated %}
                                    
-                                        <li class="{% if nbar == 'org_reg' %}current-menu-item{% endif %} " ><a  href="{% url 'orgApplication:self_org' %}"><i class="fa fa-user pr-1"></i> প্রতিষ্ঠান  </a></li>
+                                        <li class="{% if nbar == 'org' %}current-menu-item{% endif %} " ><a  href="{% url 'orgApplication:org-admin' %}"><i class="fa fa-user pr-1"></i> প্রতিষ্ঠান  </a></li>
                                   
                                 
                                 {% endif %}

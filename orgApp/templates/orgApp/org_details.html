@@ -1,0 +1,15 @@
+{% extends 'base_temp.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block script %}
+<link rel="stylesheet" href="{% static 'orgApp/css/blog_profile.css' %}">
+<link rel="stylesheet" href="{% static 'orgApp/css/profile_details.css' %}">
+{% endblock script %}
+
+
+{% block content %}
+
+    {% include "orgApp/org_profile_include.html" %}
+
+{% endblock content %}

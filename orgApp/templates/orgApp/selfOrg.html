@@ -5,6 +5,7 @@
 {% block org_content %}
 
 <div id="registration" class="small-device-content">
+
     <div class=" bg-gradient-2">
         <div class="jumbotron bg-gradient-2">
             <h4 class="" style="color:#FF5A00">এখানে আপনারা আপনাদের নতুন সংস্থা বা প্রতিষ্ঠান রেজিস্ট্রেশন করুণ ।</h4>
@@ -33,7 +34,7 @@
 
     <div class="container">
         <div class="jumbotron bg-white text-success shadow">
-            {% if new %}
+            <!-- {% if new %} -->
             {% if errorMsg %}<p>{{ errorMsg }}</p>{% endif %}
             {% if orgForm and org_detail_form %}
             <form action="{% url 'orgApplication:self_org' %}" id="organisationForm" enctype="multipart/form-data" data-districts-url="{% url 'orgApplication:ajax_load_districts' %}" data-thana-url="{% url 'orgApplication:ajax_load_thana' %}" method="post" novalidate>
@@ -91,9 +92,9 @@
             </form>
 
             {% endif %}
-            {% else %}
+            <!-- {% else %}
             <p>Old user</p>
-            {% endif %}
+            {% endif %} -->
         </div>
     </div>
 </div>

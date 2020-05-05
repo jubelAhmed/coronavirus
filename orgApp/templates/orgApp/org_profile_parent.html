@@ -1,0 +1,54 @@
+{% extends 'orgApp/org_base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block org_content %}
+
+{% load static %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="fb-profile-block">
+                <div class="fb-profile-block-thumb cover-container" style="background-image: url({% static 'images/org_profile.jpg' %});background-repeat: no-repeat;
+                background-size: auto;"></div>
+
+                <div class="profile-img">
+                    <a href="#">
+                        <img src="{% static 'images/org_default_logo.jpg' %}" alt="" title="">
+                    </a>
+                </div>
+                <div class="profile-name">
+                    <h2 class="text-golden p-2">{{organisation.name}}</h2>
+                </div>
+
+                <div class="fb-profile-block-menu">
+                    <div class="block-menu">
+                        <ul>
+                            <li><a class=" {% if profile_bar == 'org_details' %} text-danger {% endif %} " href="#">সকল
+                                    তথ্য</a></li>
+                            <li><a href="#">চলতি প্রজেক্ট </a></li>
+                            <li><a href="#"> সকল প্রজেক্ট </a></li>
+                            {% if user.is_authenticated %}
+                            <li>
+                                <a href="{% url 'orgApplication:org_edit' pk=organisation.pk  %}"
+                                    class=" {% if profile_bar == 'org_edit' %} text-danger {% endif %} "> তথ্য সংযোজন করুন </a>
+                            </li>
+
+                            {% endif %}
+
+
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block org_profile %}
+
+{% endblock org_profile %}
+
+
+{% endblock org_content %}

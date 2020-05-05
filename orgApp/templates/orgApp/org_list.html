@@ -1,0 +1,45 @@
+    <!-- all org list -->
+    <div class="row mt-5">
+        {% if organisation_list %}
+            {% for org in organisation_list.qs  %}
+
+            
+        <div class="col-12 col-md-6 col-lg-4 mt-4 mt-lg-0">
+            <div class="card mx-1" style=" border-left:3px solid gray;border-radius:10px">
+                <div class="card-body">
+                    <h4 class="card-title text-primary"> {{ org.name}}</h4>
+                    <h6 class="card-subtitle mb-2 text-muted"> {{ org.thana}},  {{ org.district}},  {{ org.division}}</h6>
+                    <p class="card-text"> {{ org.about|truncatechars:255 }}
+                    </p>
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <h6 class="text-success"> যোগাযোগ </h6>
+
+                                <p class="text-success"> {{ org.phone}} </p>
+
+                        </div>
+                        <!-- <div class="col-sm-7">
+                            <h6 class="text-danger"> একাউন্ট </h6>
+
+                                <p class="text-danger"><strong class="text-danger">Bkash :</strong> 01742234926
+                                </p>
+
+                                </ul>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="card-footer  " >
+
+                    <a href=" {{ org.facebook_url}}" class="card-link  text-primary"  >  <i class="fab fa-facebook "></i>
+                        ফেসবুক </a>
+                    {% if org.website_url %}
+                    <a href="{{ org.website_ur}}" class="card-link  text-primary"><i class="fas fa-globe ">ওয়েব</i></a>
+                    {% endif %}
+                    <a href="{{ org.pk }}" class="card-link  text-danger" style="float:right;text-decoration: underline;" >বিস্তারিত</a>
+                </div>
+            </div>
+        </div>
+         {% endfor %}
+    {% endif %}
+     
+</div><!-- .row -->

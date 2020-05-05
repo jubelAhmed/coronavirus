@@ -1,11 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700');
 
-body {
+html, body { margin: 0; padding: 0; overflow-x:hidden}
+
+/* body {
     color: #262626;
     font-size: 16px;
     line-height: 1.8;
     font-family: 'Montserrat', sans-serif;
-}
+} */
 
 img {
     vertical-align: baseline;
@@ -179,7 +181,6 @@ a:hover, a:active {
     margin: 0;
     background: #fff;
     list-style: none;
-    overflow-x: scroll;
     transition: all 0.35s;
 }
 

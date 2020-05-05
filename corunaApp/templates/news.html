@@ -12,7 +12,7 @@
         <h2 style="color:orange;">করোনা লাইভ সংবাদ</h2>
 
     </div>
-    <div class="container-fluid">
+    <div class="container">
         
     
         <div class="mb-5">
@@ -24,72 +24,132 @@
                     {% if world_info %}
                     {% for data in world_info %}
                     {% if data.country == 'Bangladesh'%}
-                    <div class="col-sm-2 my-1">
-                        <div class="card  bg-white  px-2"  style="color:tomato;border:1px solid tomato">
-                            <div class="pt-1">
-                                <p style="font-size: 24px;" class="card-title text-center">করোনা আক্রান্ত</p>
-    
-                            </div>
-                            <div class=" ">
-                                <h2 class=" text-center text-danger p-0" style="font-weight: bold;font-size: 26px;">{{data.cases}} </h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-2 my-1">
-                        <div class="card text-info  bg-white  border-info  px-2" style="">
-                            <div class="pt-1">
-                                <p style="font-size: 24px;" class="card-title text-center">সর্বমোট মৃত </p>
-    
-                            </div>
-                            <div class=" ">
-                                <h2 class="card-title text-center text-danger" style="font-weight: bold;font-size: 26px;">{{data.deaths}}</h2>
+                    <div class="col-sm-4 text-center my-1">
+                        <div class="card shadow border-left-info py-2" style="border-radius:10px; border-left:3px solid #28A745">
+                            <div class="card-body">
+                                <div class="row align-items-center no-gutters">
+                                    <div class="col text-center">
+                                        <div class="text-uppercase text-primary h4 text-sm mb-1 pb-3"><span>করোনা আক্রান্ত</span></div>
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col text-center ">
+                                                <div class="text-dark h2 mb-0 ">
+                                                    {{data.cases}} 
+                                                </div>
+                                            </div>
+                                          
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col text-center"><i class="fas fa-clipboard-list fa-3x text-secondary" aria-hidden="true"></i></div> -->
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-2 my-1 ">
-                        <div class="card text-warning  bg-white  border-warning " style="">
-                            <div class="pt-1 ">
-                                <p style="font-size: 24px;" class="card-title text-center">চিকিৎসাধীন</p>
-    
-                            </div>
-                            <div class="">
-                                <h2 class="card-title text-center text-warning" style="font-weight: bold;font-size: 26px;">{{data.active}}</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-2 my-1">
-                        <div class="card text-success  bg-white  border-success  px-2" style="">
-                            <div class="pt-1">
-                                <p style="font-size: 24px;" class="card-title text-center">সুস্থ হয়েছেন</p>
-    
-                            </div>
-                            <div class=" ">
-                                <h2 class="card-title text-center text-success" style="font-weight: bold;font-size: 26px;">{{data.recovered}}</h2>
+                    <div class="col-sm-4 text-center my-1">
+                        <div class="card shadow border-left-info py-2" style="border-radius:10px; border-left:3px solid #28A745">
+                            <div class="card-body">
+                                <div class="row align-items-center no-gutters">
+                                    <div class="col">
+                                        <div class="text-uppercase text-primary h4 text-sm mb-1 pb-3"><span>সর্বমোট মৃত</span></div>
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col text-center">
+                                                <div class="text-dark h2 mb-0 text-center">
+                                                    {{data.deaths}}
+                                                </div>
+                                            </div>
+                                          
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col text-center"><i class="fas fa-clipboard-list fa-3x text-secondary" aria-hidden="true"></i></div> -->
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-2 my-1">
-                        <div class="card text-info  bg-white  border-info  px-2" style="">
-                            <div class="pt-1">
-                                <p style="font-size: 24px;" class="card-title text-center">আজকে মৃত </p>
-    
-                            </div>
-                            <div class=" ">
-                                <h2 class="card-title text-center text-danger" style="font-weight: bold;font-size: 26px;">{{data.todayDeaths}} </h2>
+                    
+                    <div class="col-sm-4 text-center my-1">
+                        <div class="card shadow border-left-info py-2" style="border-radius:10px; border-left:3px solid #28A745">
+                            <div class="card-body">
+                                <div class="row align-items-center no-gutters">
+                                    <div class="col">
+                                        <div class="text-uppercase text-primary h4 text-sm mb-1 pb-3"><span>চিকিৎসাধীন</span></div>
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col text-center">
+                                                <div class="text-dark h2 mb-0 text-center">
+                                                    {{data.active}}
+                                                </div>
+                                            </div>
+                                          
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col text-center"><i class="fas fa-clipboard-list fa-3x text-secondary" aria-hidden="true"></i></div> -->
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-2 my-1">
-                        <div class="card bg-white  px-2" style="color:tomato;border:1px solid tomato">
-                            <div class="pt-1">
-                                <p style="font-size: 24px;" class="card-title text-center">আজকে আক্রান্ত </p>
-    
-                            </div>
-                            <div class="">
-                                <h2 class="card-title text-center text-danger p-0" style="font-weight: bold;font-size: 26px;">{{data.todayCases}}</h2>
+                    
+                    <div class="col-sm-4 text-center my-1">
+                        <div class="card shadow border-left-info py-2" style="border-radius:10px; border-left:3px solid #28A745">
+                            <div class="card-body">
+                                <div class="row align-items-center no-gutters">
+                                    <div class="col">
+                                        <div class="text-uppercase text-primary h4 text-sm mb-1 pb-3"><span>সুস্থ হয়েছেন</span></div>
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col text-center">
+                                                <div class="text-dark h2 mb-0 text-center">
+                                                    {{data.recovered}}
+                                                </div>
+                                            </div>
+                                          
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col text-center"><i class="fas fa-clipboard-list fa-3x text-secondary" aria-hidden="true"></i></div> -->
+                                </div>
                             </div>
                         </div>
                     </div>
+                  
+                    <div class="col-sm-4 text-center my-1">
+                        <div class="card shadow border-left-info py-2" style="border-radius:10px; border-left:3px solid #28A745">
+                            <div class="card-body">
+                                <div class="row align-items-center no-gutters">
+                                    <div class="col">
+                                        <div class="text-uppercase text-primary h4 text-sm mb-1 pb-3"><span>আজকে মৃত</span></div>
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col text-center">
+                                                <div class="text-dark h2 mb-0 text-center">
+                                                    {{data.todayDeaths}}
+                                                </div>
+                                            </div>
+                                          
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col text-center"><i class="fas fa-clipboard-list fa-3x text-secondary" aria-hidden="true"></i></div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 text-center my-1">
+                        <div class="card shadow border-left-info py-2" style="border-radius:10px; border-left:3px solid #28A745">
+                            <div class="card-body">
+                                <div class="row align-items-center no-gutters">
+                                    <div class="col">
+                                        <div class="text-uppercase text-primary h4 text-sm mb-1 pb-3"><span>আজকে আক্রান্ত </span></div>
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col text-center">
+                                                <div class="text-danger h2 mb-0 text-center">
+                                                    {{data.todayCases}}
+                                                </div>
+                                            </div>
+                                          
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col text-center"><i class="fas fa-clipboard-list fa-3x text-secondary" aria-hidden="true"></i></div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+               
     
     
                     {% endif %}

@@ -4,27 +4,29 @@
 {% block script %}
 <style>
     .pagination {
-      display: inline-block;
+        display: inline-block;
     }
-    
+
     .pagination a {
-      color: black;
-      float: left;
-      padding: 8px 16px;
-      text-decoration: none;
-      transition: background-color .3s;
-      border: 1px solid #ddd;
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        transition: background-color .3s;
+        border: 1px solid #ddd;
     }
-    
+
     .pagination a.active {
-      background-color: #4CAF50;
-      color: white;
-      border: 1px solid #4CAF50;
+        background-color: #4CAF50;
+        color: white;
+        border: 1px solid #4CAF50;
     }
-    
-    .pagination a:hover:not(.active) {background-color: #ddd;}
-    </style>
-    
+
+    .pagination a:hover:not(.active) {
+        background-color: #ddd;
+    }
+</style>
+
 {% endblock script %}
 
 {% block content %}
@@ -42,7 +44,7 @@
                         <div class="col-12 col-lg-8 d-flex flex-column justify-content-center align-items-start">
                             <header class="entry-header">
                                 <h1 class="p-2">দান করুন</h1>
-                                <h4 class="p-2" > <strong> সুস্থ ও স্বাভাবিক বাংলাদেশ ফিরিয়ে আনুন</strong></h4>
+                                <h4 class="p-2"> <strong> সুস্থ ও স্বাভাবিক বাংলাদেশ ফিরিয়ে আনুন</strong></h4>
                             </header><!-- .entry-header -->
 
                             <div class="entry-content mt-3">
@@ -65,19 +67,28 @@
     <div class=" py-0">
         <div class="jumbotron bg-white ">
             <ul class="list-group list-group-flush " style="color:#FF5A00">
-                <li class="list-group-item "><h5><i class="fas fa-arrow-alt-circle-right"></i>  এখানে বাংলাদেশের সকল বিশ্বস্ত সামাজিক কল্যান মূলক প্রতিষ্ঠান গুলো একসাথে পাওয়া যাবে ।</h5></li>
-                <li class="list-group-item"><h5><i class="fas fa-arrow-alt-circle-right"></i> এখানে আপনি আপানার নিজের এলাকার সংস্থা গুলো খুজে পাবেন সহজে ।</h5></li>
-                <li class="list-group-item"><h5><i class="fas fa-arrow-alt-circle-right"></i> খুজে পাবেন সকল সংস্থা গুলোর অতীত রেকর্ড ।</h5></li>
+                <li class="list-group-item ">
+                    <h5><i class="fas fa-arrow-alt-circle-right"></i> এখানে বাংলাদেশের সকল বিশ্বস্ত সামাজিক কল্যান মূলক
+                        প্রতিষ্ঠান গুলো একসাথে পাওয়া যাবে ।</h5>
+                </li>
+                <li class="list-group-item">
+                    <h5><i class="fas fa-arrow-alt-circle-right"></i> এখানে আপনি আপানার নিজের এলাকার সংস্থা গুলো খুজে
+                        পাবেন সহজে ।</h5>
+                </li>
+                <li class="list-group-item">
+                    <h5><i class="fas fa-arrow-alt-circle-right"></i> খুজে পাবেন সকল সংস্থা গুলোর অতীত রেকর্ড ।</h5>
+                </li>
 
-                
-              </ul>
-            
+
+            </ul>
+
 
             <div class="row pt-5 justify-content-center ">
                 <div class="col-12 col-md-6 col-lg-4 mt-4 mt-lg-0 ">
                     <div class="card mx-2" style="height:10rem ;border:2px double blue">
                         <div class="card-body">
-                            <h6 style="color:blue;line-height: 1.5rem;letter-spacing: 0rem;">যে প্রতিষ্ঠান গুলো সামাজিক সহায়তা করে থাকে ।
+                            <h6 style="color:blue;line-height: 1.5rem;letter-spacing: 0rem;">যে প্রতিষ্ঠান গুলো সামাজিক
+                                সহায়তা করে থাকে ।
                                 বিপদে পাশে দাঁড়ায়
                                 এবং বর্তমানে করোনা মোকাবিলার জন্যে এই প্রতিষ্ঠান গুলো উদ্যোগ নিয়েছে । </h6>
                         </div>
@@ -113,43 +124,62 @@
 
     <!-- all socila organization info -->
     <div class="all-socila-info" id="organisation-info" style="margin-bottom:100px;padding-top:0px">
-        <h3 class="text-warning bg-gradient-2 p-5" > বাংলাদেশের সকল সংস্থা বা প্রতিষ্ঠান </h3>
+        <h3 class="text-warning bg-gradient-2 p-5"> বাংলাদেশের সকল সংস্থা বা প্রতিষ্ঠান </h3>
         <div class="mx-5 ">
 
             <!-- search  -->
             <div class='org-search bg-white  pt-3 pb-1'>
-                <form>
+                <form data-org-search-url="{% url 'orgApplication:search' %}" id="searchForm"
+                    enctype="multipart/form-data" data-districts-url="{% url 'orgApplication:ajax_load_districts' %}"
+                    data-thana-url="{% url 'orgApplication:ajax_load_thana' %}" method="get" novalidate>
+                    {% csrf_token %}
                     <div class="form-row justify-content-md-center align-items-center">
 
                         <div class="form-group col-md-2">
                             <label style="letter-spacing:0px;font-size:17px;text-decoration:bold;color:#FF5A00" class=""
-                                for="">বিভাগ </label>
-                            <select id="inputState" class="form-control">
-                                <option selected>সকল</option>
-                                <option>ঢাকা</option>
-                                <option>সিলেট</option>
-                                <option>চট্রগ্রাম</option>
+                                for="id_division">বিভাগ </label>
+                            <select name="division" class="select form-control" id="id_division" class="form-control">
+                                <option value="">----------</option>
+                                {% if divisions %}
+                                {% for division in divisions %}
+                                <option value="{{ division.pk }}">{{ division.name }}</option>
+
+
+                                {% endfor %}
+                                {% endif %}
+
                             </select>
                         </div>
                         <div class="form-group col-md-2">
                             <label style="letter-spacing:0px;font-size:17px;text-decoration:bold;color:#FF5A00"
-                                for="inputState">জেলা</label>
-                            <select id="inputState" class="form-control">
-                                <option selected>সকল</option>
-                                <option>সিলেট</option>
-                                <option>সুনামগঞ্জ</option>
+                                for="id_district">জেলা</label>
+                            <select id="id_district" name="district" class="form-control">
+                                <option value="">----------</option>
+                                {% if districts %}
+                                {% for district in districts %}
+                                <!-- <option vlaue="{{district.pk}}">{{district.name}}</option> -->
+                                <option value="{{ district.pk }}">{{ district.name }}</option>
+
+                                {% endfor %}
+                                {% endif %}
                             </select>
                         </div>
                         <div class="form-group col-md-2">
                             <label style="letter-spacing:0px;font-size:17px;text-decoration:bold;color:#FF5A00"
-                                for="inputState">থানা</label>
-                            <select id="inputState" class="form-control">
-                                <option selected>ছাতক</option>
-                                <option>দোয়ারা বাজার</option>
+                                for="id_thana">থানা</label>
+                            <select id="id_thana" name="thana" class="form-control">
+                                <option value="">----------</option>
+                                {% if thanas %}
+                                {% for thana in thanas %}
+                                <!-- <option vlaue="{{thana.pk}}">{{thana.name}}</option> -->
+                                <option value="{{ thana.pk }}">{{ thana.name }}</option>
+
+                                {% endfor %}
+                                {% endif %}
                             </select>
                         </div>
                         <div class="col-md-2 align-self-center ">
-                            <button type="submit"
+                            <button id="id_orgsearch_btn" type="submit"
                                 style="border: 1px solid rgb(240, 15, 146);letter-spacing:1px;background-color:#FF5A00"
                                 class="btn-success btn  mt-4 p-2 ">অনুসন্ধান</button>
                         </div>
@@ -159,52 +189,63 @@
             </div>
 
             <!-- all org list -->
-            <div class="row mt-5">
-                {% if organisation_list %}
+            <div class="org-list mt-5" id="id_orglist">
+                <div class="row ">
+                    {% if organisation_list %}
                     {% for org in organisation_list %}
 
-                    
-                <div class="col-12 col-md-6 col-lg-4 mt-4 mt-lg-0">
-                    <div class="card mx-1" style=" border-left:3px solid gray;border-radius:10px">
-                        <div class="card-body">
-                            <h4 class="card-title text-primary"> {{ org.name}}</h4>
-                            <h6 class="card-subtitle mb-2 text-muted"> {{ org.thana}},  {{ org.district}},  {{ org.division}}</h6>
-                            <p class="card-text"> {{ org.about|truncatechars:255 }}
-                            </p>
-                            <div class="row">
-                                <div class="col-sm-5">
-                                    <h6 class="text-success"> যোগাযোগ </h6>
+                    <div class="col-sm-12 col-lg-4 col-md-6 my-2" >
+                       
+                        <div class="card shadow border-left-info "
+                            style="border-radius:10px; border-left:5px solid #87c1f5;min-height: 400px;">
+                            <div class="card-body">
+                                <h4 class="card-title text-primary"> {{ org.name}}</h4>
+                                <h6 class="card-subtitle mb-2 text-muted pb-2"> {{ org.thana}}, {{ org.district}},
+                                    {{ org.division}}</h6>
+                                <p class="card-text"> {{ org.about|truncatechars:255 }}
+                                </p>
+                                <div class="row">
+                                    <div class="col-sm-5">
+                                        <h6 class="text-success"> যোগাযোগ </h6>
 
                                         <p class="text-success"> {{ org.phone}} </p>
 
+                                    </div>
+                                    <!-- <div class="col-sm-7">
+                                        <h6 class="text-danger"> একাউন্ট </h6>
+    
+                                            <p class="text-danger"><strong class="text-danger">Bkash :</strong> 01742234926
+                                            </p>
+    
+                                            </ul>
+                                    </div> -->
                                 </div>
-                                <!-- <div class="col-sm-7">
-                                    <h6 class="text-danger"> একাউন্ট </h6>
+                                <!-- <div class="col text-center"><i class="fas fa-clipboard-list fa-3x text-secondary" aria-hidden="true"></i></div> -->
+                            </div>
+                            <div class="card-footer  ">
 
-                                        <p class="text-danger"><strong class="text-danger">Bkash :</strong> 01742234926
-                                        </p>
-
-                                        </ul>
-                                </div> -->
+                                <a href=" {{ org.org_detail.facebook_url}}" class="card-link  text-primary"> <i
+                                        class="fab fa-facebook "></i>
+                                    ফেসবুক </a>
+                                {% if org.website_url %}
+                                <a href="{{ org.org_detail.website_ur}}" class="card-link  text-primary"><i
+                                        class="fas fa-globe ">ওয়েব</i></a>
+                                {% endif %}
+                                <a href="{{ org.pk }}" class="card-link  text-danger"
+                                    style="float:right;text-decoration: underline;">বিস্তারিত</a>
                             </div>
                         </div>
-                        <div class="card-footer  " >
-
-                            <a href=" {{ org.facebook_url}}" class="card-link  text-primary"  >  <i class="fab fa-facebook "></i>
-                                ফেসবুক </a>
-                            {% if org.website_url %}
-                            <a href="{{ org.website_ur}}" class="card-link  text-primary"><i class="fas fa-globe ">ওয়েব</i></a>
-                            {% endif %}
-                            <a href="#" class="card-link  text-danger" style="float:right;text-decoration: underline;" >বিস্তারিত</a>
-                        </div>
+                        
                     </div>
-                </div>
-                 {% endfor %}
-            {% endif %}
-             
+               
+
+                {% endfor %}
+             {% endif %}
+
             </div><!-- .row -->
-        </div><!-- .container -->
-    </div><!-- .home-page-icon-boxes -->
+        </div>
+    </div><!-- .container -->
+</div><!-- .home-page-icon-boxes -->
 
 
 
@@ -217,19 +258,19 @@
     <span class="step-links">
 
         {% for i in organisation_list.paginator.page_range %}
-            {% if organisation_list.number == i %}
-                <a class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></a>
-            {% else %}
-                <a href="?page={{ i }}#organisation-info">{{ i }}</a>
-            {% endif %}
+        {% if organisation_list.number == i %}
+        <a class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></a>
+        {% else %}
+        <a href="?page={{ i }}#organisation-info">{{ i }}</a>
+        {% endif %}
         {% endfor %}
 
         {% if organisation_list.has_previous %}
-            <a class="text-success" href="?page=1#organisation-info">&laquo; প্রথম</a>
-            <a class="text-success" href="?page={{ organisation_list.previous_page_number }}#organisation-info">পূর্বে</a>
+        <a class="text-success" href="?page=1#organisation-info">&laquo; প্রথম</a>
+        <a class="text-success" href="?page={{ organisation_list.previous_page_number }}#organisation-info">পূর্বে</a>
         {% endif %}
 
-        
+
         <!-- <a href="#" class="active">2</a>
         <a href="#">3</a>
         <a href="#">4</a>
@@ -239,14 +280,76 @@
         </span>
 
         {% if organisation_list.has_next %}
-            <a class="text-success" href="?page={{ organisation_list.next_page_number }}#organisation-info">পরবর্তী</a>
-            <a class="text-success" href="#organisation-info?page={{ organisation_list.paginator.num_pages }}#organisation-info">শেষ &raquo;</a>
+        <a class="text-success" href="?page={{ organisation_list.next_page_number }}#organisation-info">পরবর্তী</a>
+        <a class="text-success"
+            href="#organisation-info?page={{ organisation_list.paginator.num_pages }}#organisation-info">শেষ &raquo;</a>
         {% endif %}
     </span>
 </div>
 {% endif %}
 
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    $("#id_division").change(function () {
+        var url = $("#searchForm").attr("data-districts-url"); // get the url of the `load_cities` view
+        var cityId = $(this).val();
+        // get the selected country ID from the HTML input
+        event.preventDefault();
+        $.ajax({ // initialize an AJAX request
+            url: url, // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+            data: {
+                'city': cityId // add the country id to the GET parameters
+            },
+            success: function (data) { // `data` is the return of the `load_cities` view function
+                $("#id_district").html(data);
+                // replace the contents of the city input with the data that came from the server
+            }
+        });
 
+    });
+
+    // load thana ajax req
+
+    $("#id_district").change(function () {
+        var url = $("#searchForm").attr("data-thana-url"); // get the url of the `load_cities` view
+        var districtId = $(this).val(); // get the selected country ID from the HTML input
+        event.preventDefault();
+        $.ajax({ // initialize an AJAX request
+            url: url, // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+            data: {
+                'district': districtId // add the country id to the GET parameters
+            },
+            success: function (data) { // `data` is the return of the `load_cities` view function
+                $("#id_thana").html(data);
+                // replace the contents of the city input with the data that came from the server
+            }
+        });
+
+    });
+
+    $("#id_orgsearch_btn").click(function () {
+        var url = $("#searchForm").attr("data-org-search-url"); // get the url of the `load_cities` view
+
+        var division = $("#id_division").val();
+        var district = $("#id_district").val();
+        var thana = $("#id_thana").val();
+        // get the selected country ID from the HTML input
+        event.preventDefault();
+        $.ajax({ // initialize an AJAX request
+            url: url, // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+            data: {
+                'division': division,
+                'district': district,
+                'thana': thana,
+            },
+            success: function (data) { // `data` is the return of the `load_cities` view function
+                $("#id_orglist").html(data);
+                // replace the contents of the city input with the data that came from the server
+            }
+        });
+
+    });
+</script>
 {% endblock content %}
 
 {% block footer %}
@@ -254,3 +357,5 @@
 </footer>
 
 {% endblock footer %}
+
+

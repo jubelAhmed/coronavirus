@@ -1,0 +1,140 @@
+{% load static %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="fb-profile-block">
+                <div class="fb-profile-block-thumb cover-container" style="background-image: url({% static 'images/org_profile.jpg' %});background-repeat: no-repeat;
+                background-size: auto;"></div>
+
+                <div class="profile-img">
+                    <a href="#">
+                        <img src="{% static 'images/org_default_logo.jpg' %}" alt="" title="">
+                    </a>
+                </div>
+                <div class="profile-name">
+                    <h2 class="text-golden p-2">{{organisation.name}}</h2>
+                </div>
+
+                <div class="fb-profile-block-menu">
+                    <div class="block-menu">
+                        <ul>
+                            <li><a class="text-danger" href="#">সকল তথ্য</a></li>
+                            <li><a href="#">চলতি প্রজেক্ট </a></li>
+                            <li><a href="#"> সকল প্রজেক্ট </a></li>
+                            {% block list_add %}
+                            {% endblock list_add %}
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="cbp_tmtimeline">
+                <li>
+                    <time class="cbp_tmtime" datetime=" "><span class="large text-primary">প্রতিষ্ঠানের</span>  <span class="large text-primary">সংক্ষিপ্ত বিবরণ </span></time>
+                    <div class="cbp_tmicon bg-success"><i class="zmdi zmdi-account"></i></div>
+                    <div class="cbp_tmlabel empty "> <span class="text-dark large">{{organisation.about}}</span> </div>
+                </li>
+                <li>
+                    <time class="cbp_tmtime" datetime=""><span style="font-size: 18px;" class="large text-primary">যোগাযোগের<br>ঠিকানা </span> <span class="large text-primary " ></span></time>
+                    <div class="cbp_tmicon bg-info"><i class="zmdi zmdi-label"></i></div>
+                    <div class="cbp_tmlabel">
+                       <div class="row align-items-center">
+                           <div class="col-sm-5 p-2 m-2 align-self-center" style="border-right: 4px solid #2CA8FF;">
+                               <p> <strong>মোবাইল : </strong> {{organisation.phone}} </p>
+                               <p> <strong>ইমেইল : </strong> <a href="mailto:{{organisation.email}}">{{organisation.email}}</a> </p>
+                           </div>
+                           <div class="col-sm-5 p-2 m-2 align-self-center">
+                            <p> <strong>ওয়েবসাইট : </strong> <a href="{{ organisation.org_detail.website_url}} ">{{organisation.org_detail.website_url}} </a> </p>
+                            <p> <strong>ফেসবুক পেজ : </strong> <a href="{{organisation.org_detail.facebook_url}} ">{{organisation.org_detail.facebook_url}} </a></p>
+                           </div>
+                       </div>
+                    </div>
+                </li>
+                <li>
+                    <time class="cbp_tmtime" datetime=""><span style="font-size: 18px;" class="large text-primary">প্রতিষ্ঠানের<br>ঠিকানা </span> <span class="large text-primary " ></span></time>
+                    <div class="cbp_tmicon bg-orange"><i class="zmdi zmdi-label"></i></div>
+                    <div class="cbp_tmlabel">
+                       <div class="row">
+                           <div class="col-sm-5 p-2 m-2" style="border-right: 4px solid orange;">
+                               <p> <strong>বিভাগ : </strong> {{organisation.division}} </p>
+                               <p> <strong>জেলা : </strong> {{organisation.district}} </p>
+                           </div>
+                           <div class="col-sm-5 p-2 m-2">
+                            <p> <strong>থানা : </strong> {{organisation.thana}} </p>
+                            <p> <strong>পোস্ট কোড : </strong> {{organisation.postal_area}} </p>
+                           </div>
+                       </div>
+                    </div>
+                </li>
+                <!-- <li>
+                    <time class="cbp_tmtime" datetime="2017-11-03T13:22"><span>01:22 PM</span> <span>Yesterday</span></time>
+                    <div class="cbp_tmicon bg-green"> <i class="zmdi zmdi-case"></i></div>
+                    <div class="cbp_tmlabel">
+                        <h2><a href="javascript:void(0);">Job Meeting</a></h2>
+                        <p>You have a meeting at <strong>Laborator Office</strong> Today.</p>
+                    </div>
+                </li> -->
+                <!-- <li>
+                    <time class="cbp_tmtime" datetime="2017-10-22T12:13"><span>12:13 PM</span> <span>Two weeks ago</span></time>
+                    <div class="cbp_tmicon bg-blush"><i class="zmdi zmdi-pin"></i></div>
+                    <div class="cbp_tmlabel">
+                        <h2><a href="javascript:void(0);">Bangladesh</a> <span>checked in at</span> <a href="javascript:void(0);">Chattak</a></h2>
+                        <blockquote>
+                            <p class="blockquote blockquote-primary">
+                                "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."                                    
+                                <br>
+                                <small>
+                                    - Isabella
+                                </small>
+                            </p>
+                        </blockquote>
+                        <div class="row clearfix">
+                            <div class="col-lg-12">
+                                <div class="map m-t-10">
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.91477011208!2d-74.11976308802028!3d40.69740344230033!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew+York%2C+NY%2C+USA!5e0!3m2!1sen!2sin!4v1508039335245" frameborder="0" style="border:0; width: 100%;" allowfullscreen=""></iframe>
+                                </div>
+                            </div>
+                        </div>        					
+                    </div>
+                </li> -->
+                <!-- <li>
+                    <time class="cbp_tmtime" datetime="2017-10-22T12:13"><span>12:13 PM</span> <span>Two weeks ago</span></time>
+                    <div class="cbp_tmicon bg-orange"><i class="zmdi zmdi-camera"></i></div>
+                    <div class="cbp_tmlabel">
+                        <h2><a href="javascript:void(0);">Eroll Maxhuni</a> <span>uploaded</span> 4 <span>new photos to album</span> <a href="javascript:void(0);">Summer Trip</a></h2>
+                        <blockquote>Pianoforte principles our unaffected not for astonished travelling are particular.</blockquote>
+                        <div class="row">
+                            <div class="col-lg-3 col-md-6 col-6"><a href="javascript:void(0);"><img src="assets/images/image1.jpg" alt="" class="img-fluid img-thumbnail m-t-30"></a> </div>
+                            <div class="col-lg-3 col-md-6 col-6"><a href="javascript:void(0);"> <img src="assets/images/image2.jpg" alt="" class="img-fluid img-thumbnail m-t-30"></a> </div>
+                            <div class="col-lg-3 col-md-6 col-6"><a href="javascript:void(0);"> <img src="assets/images/image3.jpg" alt="" class="img-fluid img-thumbnail m-t-30"> </a> </div>
+                            <div class="col-lg-3 col-md-6 col-6"><a href="javascript:void(0);"> <img src="assets/images/image4.jpg" alt="" class="img-fluid img-thumbnail m-t-30"> </a> </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <time class="cbp_tmtime" datetime="2017-11-03T13:22"><span>01:22 PM</span> <span>Two weeks ago</span></time>
+                    <div class="cbp_tmicon bg-green"> <i class="zmdi zmdi-case"></i></div>
+                    <div class="cbp_tmlabel">
+                        <h2><a href="javascript:void(0);">Job Meeting</a></h2>
+                        <p>You have a meeting at <strong>Laborator Office</strong> Today.</p>                            
+                    </div>
+                </li>
+                <li>
+                    <time class="cbp_tmtime" datetime="2017-10-22T12:13"><span>12:13 PM</span> <span>Month ago</span></time>
+                    <div class="cbp_tmicon bg-blush"><i class="zmdi zmdi-pin"></i></div>
+                    <div class="cbp_tmlabel">
+                        <h2><a href="javascript:void(0);">Arlind Nushi</a> <span>checked in at</span> <a href="javascript:void(0);">Laborator</a></h2>
+                        <blockquote>Great place, feeling like in home.</blockquote>                            
+                    </div>
+                </li> -->
+            </ul>  
+        </div>
+    </div>
+</div>
