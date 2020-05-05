@@ -7,13 +7,15 @@ import uuid
 class UserProfileManager(BaseUserManager):
     """Manager for user profiles"""
 
-    def create_user(z):
+    def create_user(self, email=None, name=None, password=None):
         """create a new user profile"""
         if not email:
             raise ValueError("User must have an email address")
         if not name:
             """ Generating random unique name if not given """
             name = uuid.uuid4().hex[:12].upper()
+        if not password:
+            raise IOError("Password must be given!!!")
 
         email = self.normalize_email(email)
         user = self.model(email=email, name=name)
