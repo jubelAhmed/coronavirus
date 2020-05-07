@@ -1,11 +1,11 @@
     <!-- all org list -->
-    <div class="row mt-5">
+    <div class="row ">
         {% if organisation_list %}
             {% for org in organisation_list.qs  %}
 
             
-        <div class="col-12 col-md-6 col-lg-4 mt-4 mt-lg-0">
-            <div class="card mx-1" style=" border-left:3px solid gray;border-radius:10px">
+        <div class="col-sm-12 col-lg-4 col-md-6 my-2">
+            <div class="card mx-1" style=" border-left:3px solid gray;border-radius:10px;min-height: 400px;">
                 <div class="card-body">
                     <h4 class="card-title text-primary"> {{ org.name}}</h4>
                     <h6 class="card-subtitle mb-2 text-muted"> {{ org.thana}},  {{ org.district}},  {{ org.division}}</h6>
@@ -30,16 +30,16 @@
                 </div>
                 <div class="card-footer  " >
 
-                    <a href=" {{ org.facebook_url}}" class="card-link  text-primary"  >  <i class="fab fa-facebook "></i>
+                    <a href=" {{ org.org_detail.facebook_url}}" class="card-link  text-primary"  >  <i class="fab fa-facebook "></i>
                         ফেসবুক </a>
                     {% if org.website_url %}
-                    <a href="{{ org.website_ur}}" class="card-link  text-primary"><i class="fas fa-globe ">ওয়েব</i></a>
+                    <a href="{{ org.org_detail.website_ur}}" class="card-link  text-primary"><i class="fas fa-globe ">ওয়েব</i></a>
                     {% endif %}
                     <a href="{{ org.pk }}" class="card-link  text-danger" style="float:right;text-decoration: underline;" >বিস্তারিত</a>
                 </div>
             </div>
         </div>
-         {% endfor %}
+     {% endfor %}
     {% endif %}
      
-</div><!-- .row -->
+    </div><!-- .row -->

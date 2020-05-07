@@ -3,6 +3,7 @@ from orgApp import models
 from django.utils.translation import ugettext_lazy as _
 from mediumeditor.widgets import MediumEditorTextarea
 from .models import OrgDetail
+# from bootstrap_datepicker_plus import DatePickerInput, TimePickerInput, DateTimePickerInput, MonthPickerInput, YearPickerInput
 
 
 class CategoryMainRegForm(forms.ModelForm):
@@ -17,7 +18,7 @@ class OrganisationMainRegForm(forms.ModelForm):
         model = models.Organisation
         fields = ('name', 'about', 'division', 'district', 'thana', 'phone', 'email')
         widgets = {
-            'name': forms.TextInput(attrs={'class': 'textinputclass', 'title': 'hello'}),
+            'name': forms.TextInput(attrs={'class': 'textinputclass'}),
             'about': forms.Textarea(attrs={'class': 'editable medium_editor_textarea postcontent'})
         }
         labels = {
@@ -50,13 +51,41 @@ class OrgDetailMainRegForm(forms.ModelForm):
 
         }
 
-# 'description': _(' অন্যান্য কথা'),
+
+from django.contrib.admin.widgets import AdminDateWidget,AdminSplitDateTime
+from coresite import settings
+from django.forms.fields import DateField
+# from bootstrap_datepicker.widgets import DatePicker
 
 class OrgProjectMainRegForm(forms.ModelForm):
+    
+    start_date = DateField(input_formats=settings.DATE_INPUT_FORMATS,widget=AdminDateWidget())
+    end_date = DateField(input_formats=settings.DATE_INPUT_FORMATS,widget=AdminDateWidget())
+
     class Meta:
         model = models.OrgProject
-        fields = '__all__'
+        fields = ('project_name', 'selected_area', 'details', 'start_date', 'end_date','project_image', 'budget')
+        
+        help_texts = {
+            'project_name': _('আপনার প্রজেক্টের নাম প্রয়োজনের উপর ভিত্তি করে লিখুন'),
+            'selected_area': _('আরামবাগ, মোহাম্মদপুর, ধানমন্ডি '),
+            'budget': _('২০০০০'),
+        }
+        labels = {
+            'project_name': _('প্রজেক্টের নাম'),
+            'selected_area': _('আপনার প্রস্তাবিত এলাকার নাম বা ব্যাক্তির নাম '),
+            'details': _('প্রজেক্টের বিস্তারিত বর্ণনা'),
+            'start_date': _('সংগ্রহের শুরুর তারিখ'),
+            'end_date': _('সংগ্রহের শেষ তারিখ'),
+            'project_image': _('প্রস্থাবিত ছবি'),
+            'budget': _('প্রয়োজনীয় প্ররিমান টাকা'),
 
+        }
+    # def __init__(self, *args, **kwargs):
+    #     super(AdminDateWidget, self).__init__(*args, **kwargs)
+    #     self.input_formats = ('%m/%d/%Y',)
+    
+        
 
 """
 If we need any extra features in form we will create a class which will extends those class accordingly...

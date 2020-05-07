@@ -22,8 +22,12 @@ from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
 from . import views
+from django.views.i18n import JavaScriptCatalog
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('jsi18n', JavaScriptCatalog.as_view(), name='js-catlog'),
     path('org/', include('orgApp.urls', namespace='orgApplication')),
     path('coruna/', include('corunaApp.urls'), name='coruna'),
     path('user/', include('userApp.urls'), name='user'),

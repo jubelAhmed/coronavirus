@@ -1,15 +1,17 @@
+from django.contrib import messages
 from django.shortcuts import render
 from .models import *
 from django.http import HttpRequest, HttpResponsePermanentRedirect
 from django.shortcuts import get_object_or_404, reverse
 from orgApp import forms
 from userApp.models import UserProfile
-from .models import Organisation,City,District,Thana,OrgDetail,OrgProject
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from .filters import OrganisationFilter
 from django.urls import reverse_lazy
-from django.http.response import HttpResponseRedirect
+from django.http.response import HttpResponse, HttpResponseRedirect
+import datetime
+
 
 
 # Create your views here.
@@ -20,7 +22,8 @@ def home(request):
     divisions = City.objects.all().order_by('name')
     districts = District.objects.all().order_by('name')
     thanas = Thana.objects.all().order_by('name')
-    context  ={}
+    all_org_page_obj = None
+    context = {}
     if total_org_list > 0:
         all_org = Organisation.objects.filter(status=True).order_by('name')
         paginator = Paginator(all_org, 10) # Show 25 contacts per page.
@@ -29,8 +32,14 @@ def home(request):
     else:
         all_org = False
     
+    total_org_project_list = OrgProject.objects.filter(status=True,end_date__gte=datetime.date.today()).count()
+    all_running_projects = None
+    if total_org_project_list > 0:
+        all_running_projects = OrgProject.objects.filter(status=True,end_date__gte=datetime.date.today()).order_by('end_date')
+    
     context = {
         'organisation_list': all_org_page_obj,
+        'all_running_projects': all_running_projects,
         'divisions': divisions,
         'districts': districts,
         'thanas': thanas,
@@ -217,6 +226,71 @@ def load_thana(request):
     thana = Thana.objects.filter(district=district_id).order_by('name')
     print(thana)
     return render(request, 'orgApp/thana_dropdown_list_options.html', {'thana': thana})
+
+
+def org_project_create_view(request,pk):
+    template_name = "orgApp/org_project_create.html"
+    org = get_object_or_404(Organisation,pk=pk)
+    project_main_form = forms.OrgProjectMainRegForm(request.POST or None, request.FILES or None,instance=org)   
+    
+    if request.method == 'POST':
+        if project_main_form.is_valid():
+            start_date = project_main_form.cleaned_data['start_date']
+            end_date = project_main_form.cleaned_data['start_date']
+            project_name = project_main_form.cleaned_data['project_name']
+            selected_area = project_main_form.cleaned_data['selected_area']
+            details = project_main_form.cleaned_data['details']
+            project_image = project_main_form.cleaned_data['project_image']
+            budget = project_main_form.cleaned_data['budget']
+            OrgProject.objects.create(start_date=start_date,end_date=end_date,project_name=project_name,selected_area=selected_area,details=details,organization=org,budget=budget,project_image=project_image)
+            messages.add_message(request, messages.SUCCESS, "Project added successfully!!")
+            print('success')
+        else:
+            messages.add_message(request, messages.ERROR, "Please correct the errors!!")
+    
+    context = {'form': project_main_form,'organisation':org,"profile_bar":'org_project'}
+    return render(request, template_name, context)
+
+
+
+def org_project_view(request):
+  
+    total_org_project_list = OrgProject.objects.filter(status=True,end_date__gte=datetime.date.today()).count()
+    all_running_projects = None
+    if total_org_project_list > 0:
+        all_running_projects = OrgProject.objects.filter(status=True,end_date__gte=datetime.date.today()).order_by('end_date')
+    
+    context = {
+        'all_running_projects': all_running_projects,
+        'nbar': 'home',
+    }
+    return render(request, 'index_main.html', context)
+        
+        
+    
+    print(total_org_project_list)
+    return HttpResponse('hello word')
+    # divisions = City.objects.all().order_by('name')
+    # districts = District.objects.all().order_by('name')
+    # thanas = Thana.objects.all().order_by('name')
+    # all_org_page_obj = None
+    # context = {}
+    # if total_org_list > 0:
+    #     all_org = Organisation.objects.filter(status=True).order_by('name')
+    #     paginator = Paginator(all_org, 10) # Show 25 contacts per page.
+    #     page_number = request.GET.get('page')
+    #     all_org_page_obj = paginator.get_page(page_number)
+    # else:
+    #     all_org = False
+    
+    # context = {
+    #     'organisation_list': all_org_page_obj,
+    #     'divisions': divisions,
+    #     'districts': districts,
+    #     'thanas': thanas,
+    #     'nbar': 'home',
+    # }
+    # return render(request, 'index_main.html', context)
 
 
 # some dump code

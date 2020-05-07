@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'mediumeditor',
     'import_export',
     'django_filters',
+    # 'bootstrap_datepicker',
 
   
 ]
@@ -184,3 +185,5 @@ AUTH_USER_MODEL = "userApp.UserProfile"
 LOGIN_REDIRECT_URL = '/org/orgadmin/'
 LOGOUT_REDIRECT_URL = '/org/'
 
+
+DATE_INPUT_FORMATS = ('%d/%m/%Y','%d/%m/%Y')

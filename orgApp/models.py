@@ -84,16 +84,18 @@ class OrgDetail(models.Model):
 
 
 class OrgProject(models.Model):
-    name = models.CharField(max_length=255)
+    project_name = models.CharField(max_length=255)
     organization = models.ForeignKey(Organisation, on_delete=models.CASCADE)
-    selected_area = models.CharField(max_length=255)
+    selected_area = models.CharField(max_length=255,null=True, blank=True)
     details = models.TextField()
-    duration = models.DateTimeField()
+    duration = models.DateTimeField(null=True, blank=True)
+    start_date = models.DateField()
+    end_date = models.DateField()
     project_image = models.ImageField(upload_to='images/org/project/', null=True, blank=True)
-    budget = models.CharField(max_length=255)
-    status = models.TextField(verbose_name="Status")
+    budget = models.CharField(max_length=255,null=True, blank=True)
+    status = models.BooleanField(verbose_name="status",default=False)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.name
+        return self.project_name

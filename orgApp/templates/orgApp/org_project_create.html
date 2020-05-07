@@ -1,0 +1,91 @@
+{% extends 'orgApp/org_profile_parent.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block org_profile %}
+<script src="{% url 'js-catlog' %}"></script>
+    <script src="{% static '/admin/js/core.js' %}"></script>
+    <!-- <link rel="stylesheet" href="{% static 'admin/css/base.css' %}">  -->
+     <link rel="stylesheet" href="{% static 'admin/css/widgets.css' %}">
+
+ {{ form.media }}
+
+<div class="container jumbotron">
+
+    {% if form.errors %}
+        {% for field in form %}
+            {% for error in field.errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+            {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li class="{{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+
+
+    <form action="{% url 'orgApplication:org-project-create' pk=organisation.pk %}" id="projectForm" enctype="multipart/form-data"
+        method="post" novalidate>
+        {% csrf_token %}
+        {{ form.project_name|as_crispy_field }}
+        {{ form.selected_area|as_crispy_field }}
+        {{ form.details|as_crispy_field }}
+        <div class="row">
+            <div class="col-sm-4">
+
+
+                {{ form.start_date|as_crispy_field}}
+
+
+            </div>
+            <div class="col-sm-4">
+                {{ form.end_date|as_crispy_field }}
+            </div>
+            <div class="col-sm-4">
+                {{ form.budget|as_crispy_field }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                {{ form.project_image|as_crispy_field }}
+            </div>
+          
+        </div>
+    
+
+        <div class="text-right">
+            <button class="btn btn-lg btn-danger  mt-3 " style="padding-left: 100px;padding-right: 100px;"
+                type="submit" value="প্রজেক্ট">প্রজেক্ট তৈরী করুন</button>
+        </div>
+    </form>
+</div>
+
+
+<script>
+    window.onload = onPageLoad;
+
+    function onPageLoad() {
+        all_date_fileds = document.querySelectorAll('.vDateField');
+        all_date_fileds.forEach(function(dateItem) {
+            dateItem.parentNode.classList.add("input-group");
+          });
+    }
+
+    
+
+</script>
+
+{% endblock org_profile %}

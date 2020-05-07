@@ -2,6 +2,7 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
+
 {% block org_content %}
 
 {% load static %}
@@ -32,6 +33,14 @@
                             <li>
                                 <a href="{% url 'orgApplication:org_edit' pk=organisation.pk  %}"
                                     class=" {% if profile_bar == 'org_edit' %} text-danger {% endif %} "> তথ্য সংযোজন করুন </a>
+                            </li>
+
+                            {% endif %}
+
+                            {% if user.is_authenticated %}
+                            <li>
+                                <a href="{% url 'orgApplication:org-project-create' pk=1 %}"
+                                    class=" {% if profile_bar == 'org_project' %} text-danger {% endif %} "> নতুন প্রজেক্ট তৈরি করুন </a>
                             </li>
 
                             {% endif %}

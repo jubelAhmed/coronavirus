@@ -66,21 +66,23 @@
     <!-- socila activities info -->
     <div class=" py-0">
         <div class="jumbotron bg-white ">
-            <ul class="list-group list-group-flush " style="color:#FF5A00">
-                <li class="list-group-item ">
-                    <h5><i class="fas fa-arrow-alt-circle-right"></i> এখানে বাংলাদেশের সকল বিশ্বস্ত সামাজিক কল্যান মূলক
-                        প্রতিষ্ঠান গুলো একসাথে পাওয়া যাবে ।</h5>
-                </li>
-                <li class="list-group-item">
-                    <h5><i class="fas fa-arrow-alt-circle-right"></i> এখানে আপনি আপানার নিজের এলাকার সংস্থা গুলো খুজে
-                        পাবেন সহজে ।</h5>
-                </li>
-                <li class="list-group-item">
-                    <h5><i class="fas fa-arrow-alt-circle-right"></i> খুজে পাবেন সকল সংস্থা গুলোর অতীত রেকর্ড ।</h5>
-                </li>
+            <div class="jumbotron bg-white py-0">
+                <ul class="list-group list-group-flush " style="color:#FF5A00">
+                    <li class="list-group-item ">
+                        <h5><i class="fas fa-arrow-alt-circle-right"></i> এখানে বাংলাদেশের সকল বিশ্বস্ত সামাজিক কল্যান মূলক
+                            প্রতিষ্ঠান গুলো একসাথে পাওয়া যাবে ।</h5>
+                    </li>
+                    <li class="list-group-item">
+                        <h5><i class="fas fa-arrow-alt-circle-right"></i> এখানে আপনি আপানার নিজের এলাকার সংস্থা গুলো খুজে
+                            পাবেন সহজে ।</h5>
+                    </li>
+                    <li class="list-group-item">
+                        <h5><i class="fas fa-arrow-alt-circle-right"></i> খুজে পাবেন সকল সংস্থা গুলোর অতীত রেকর্ড ।</h5>
+                    </li>
 
 
-            </ul>
+                </ul>
+            </div>
 
 
             <div class="row pt-5 justify-content-center ">
@@ -121,6 +123,98 @@
 
         </div>
     </div>
+
+    <!-- all running project -->
+
+    <div class="our-project">
+        <div class="container">
+            <div class="row">
+                <div class="coL-12">
+                    <div class="section-heading">
+                        <h2 class="entry-title">চলতি প্রজেক্ট</h2>
+                        
+                        
+                    </div><!-- .section-heading -->
+                </div><!-- .col -->
+            </div><!-- .row -->
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="swiper-container causes-slider">
+                        <div class="swiper-wrapper">
+                            {% if all_running_projects %}
+                            {% for project in all_running_projects %}
+                            
+                            <div class="swiper-slide">
+                                <div class="cause-wrap">
+                                    <figure class="m-0 " style="border-bottom:1px solid #ff0">
+                                        {% if project.project_image %}
+                                        <img class="project-images" src="{{ project.project_image.url }}" height="240px" alt="">
+                                        {% else %}
+                                        <img class="default-images" src="" height="240px" alt="">
+                                        {% endif %}
+
+                                        <div class="figure-overlay d-flex justify-content-center align-items-center position-absolute w-100 h-100">
+                                            <a href="#" class="btn gradient-bg mr-2">দান করুন</a>
+                                        </div><!-- .figure-overlay -->
+                                    </figure>
+
+                                    <div class="cause-content-wrap">
+                                        <header class="entry-header d-flex flex-wrap align-items-center">
+                                            <h3 class="entry-title w-100 m-0"><a href="#">{{project.project_name}}</a></h3>
+                                            <p class="text-muted pt-1" style="font-size: 14px;">{{project.selected_area}}</p>
+                                            
+                                            
+                                            
+                                        </header><!-- .entry-header -->
+
+                                        <div class="entry-content mt-0">
+                                            <p class="m-0 p text-dark">{{project.details|truncatechars:300}}</p>
+                                        </div><!-- .entry-content -->
+                                        
+                                        <div class="fund-raised w-100">
+                                            <!-- <div class="fund-raised-bar-1 barfiller">
+                                                <div class="tipWrap">
+                                                    <span class="tip"></span>
+                                                </div>
+
+                                                <span class="fill" data-percentage="83"></span>
+                                            </div> -->
+                                            <p class="text-dark ml-0" style="font-size: 14px;">উত্তোলনের শেষ তারিখ: {{project.end_date}}</p>
+
+                                            <div class="fund-raised-details d-flex flex-wrap justify-content-between align-items-center">
+
+                                                <div class="fund-raised-goal mt-4 text-info">
+                                                    {% if project.budget  %}
+                                                    বাজেট : {{project.budget}} টাকা 
+                                                    {% else %}
+                                                    বাজেট উল্লেখ নেই 
+                                                    {% endif %}
+                                                </div><!-- .fund-raised-goal -->
+                                            </div><!-- .fund-raised-details -->
+                                        </div><!-- .fund-raised -->
+                                    </div><!-- .cause-content-wrap -->
+                                </div><!-- .cause-wrap -->
+                            </div><!-- .swiper-slide -->
+                            {% endfor %}
+                            {%endif %}
+                           
+                        </div><!-- .swiper-wrapper -->
+
+                    </div><!-- .swiper-container -->
+
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next flex justify-content-center align-items-center">
+                        <span><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1171 960q0 13-10 23l-466 466q-10 10-23 10t-23-10l-50-50q-10-10-10-23t10-23l393-393-393-393q-10-10-10-23t10-23l50-50q10-10 23-10t23 10l466 466q10 10 10 23z"/></svg></span>
+                    </div>
+
+                    <div class="swiper-button-prev flex justify-content-center align-items-center">
+                        <span><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1203 544q0 13-10 23l-393 393 393 393q10 10 10 23t-10 23l-50 50q-10 10-23 10t-23-10l-466-466q-10-10-10-23t10-23l466-466q10-10 23-10t23 10l50 50q10 10 10 23z"/></svg></span>
+                    </div>
+                </div><!-- .col -->
+            </div><!-- .row -->
+        </div><!-- .container -->
+    </div><!-- .our-causes -->
 
     <!-- all socila organization info -->
     <div class="all-socila-info" id="organisation-info" style="margin-bottom:100px;padding-top:0px">
@@ -349,6 +443,32 @@
         });
 
     });
+
+    
+    window.onload = onPageLoad;
+
+    imagesName = ["{% static 'images/teamwork-1.png'  %}","{% static 'images/teamwork-2.jpg'  %}","{% static 'images/teamwork-3.jpg'  %}"]
+
+    console.log(imagesName.length)
+
+    function onPageLoad() {
+        all_date_fileds = document.querySelectorAll('.default-images');
+        count = 0;
+        all_date_fileds.forEach(function(dateItem) {
+            
+            dateItem.setAttribute("src", imagesName[count]);
+
+            if(count == imagesName.length-1)
+                count = 0;
+            else count++;
+            console.log(count)
+            
+        });
+    }
+    
+        
+    
+    
 </script>
 {% endblock content %}
 
