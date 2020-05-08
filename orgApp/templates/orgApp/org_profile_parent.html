@@ -23,7 +23,7 @@
                 </div>
 
                 <div class="fb-profile-block-menu">
-                    <div class="block-menu">
+                    <div class="block-menu flex-container">
                         <ul>
                             <li><a class=" {% if profile_bar == 'org_details' %} text-danger {% endif %} " href="{% url 'orgApplication:org_profile_detail' pk=organisation.pk  %}">সকল
                                     তথ্য</a></li>
@@ -47,6 +47,7 @@
 
 
                         </ul>
+                        
                     </div>
 
                 </div>
@@ -55,9 +56,10 @@
     </div>
 </div>
 
+<div class="all_profile_view">
 {% block org_profile %}
 
 {% endblock org_profile %}
-
+</div>
 
 {% endblock org_content %}

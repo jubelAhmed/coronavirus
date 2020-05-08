@@ -89,4 +89,48 @@
     border-left: 1px solid #e9eaed;
   }
                               
-  
+  @media (max-width: 500px) {
+   
+    .profile-name {
+      bottom: 200px;
+      left: 10px;
+      position: absolute;
+    }
+       
+    .fb-profile-block-menu{
+      height: 100px;
+      position: absolute;
+      width:100%;
+     }
+     .block-menu {
+      clear: right;
+      padding-left: 0px;
+    }
+    .flex-container{
+      display: flex;
+
+    }
+    .block-menu ul li a {
+      border-right: 1px solid #e9eaed;
+      float: left;
+      font-size: 12px;
+      font-weight: bold;
+      height: 42px;
+      line-height: 3.0;
+      padding: 0 8px;
+      position: relative;
+      vertical-align: middle;
+      color:#4b4f56;
+      text-transform:capitalize;
+      background-color: azure;
+    }
+    .all_profile_view{
+      margin-top:110px;
+    }
+    .second-col-1{
+      border-right: 4px solid #2CA8FF;
+    }
+    .second-col-2{
+      border-right: 4px solid orange;
+    }
+  }

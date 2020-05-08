@@ -25,6 +25,8 @@
     .pagination a:hover:not(.active) {
         background-color: #ddd;
     }
+
+
 </style>
 
 {% endblock script %}
@@ -131,7 +133,7 @@
             <div class="row">
                 <div class="coL-12">
                     <div class="section-heading">
-                        <h2 class="entry-title">চলতি প্রজেক্ট</h2>
+                        <h2 class="entry-title ml-3">চলতি প্রজেক্ট</h2>
                         
                         
                     </div><!-- .section-heading -->
@@ -149,9 +151,9 @@
                                 <div class="cause-wrap">
                                     <figure class="m-0 " style="border-bottom:1px solid #ff0">
                                         {% if project.project_image %}
-                                        <img class="project-images" src="{{ project.project_image.url }}" height="240px" alt="">
+                                        <img class="project-images" src="{{ project.project_image.url }}" height="200px" alt="">
                                         {% else %}
-                                        <img class="default-images" src="" height="240px" alt="">
+                                        <img class="default-images" src="" height="200px" alt="">
                                         {% endif %}
 
                                         <div class="figure-overlay d-flex justify-content-center align-items-center position-absolute w-100 h-100">
@@ -203,6 +205,11 @@
 
                     </div><!-- .swiper-container -->
 
+                    <div class="pagination-wrap position-absolute w-100">
+                        <div class="container">
+                            <div class="swiper-pagination"></div>
+                        </div><!-- .container -->
+                    </div>
                     <!-- Add Arrows -->
                     <div class="swiper-button-next flex justify-content-center align-items-center">
                         <span><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1171 960q0 13-10 23l-466 466q-10 10-23 10t-23-10l-50-50q-10-10-10-23t10-23l393-393-393-393q-10-10-10-23t10-23l50-50q10-10 23-10t23 10l466 466q10 10 10 23z"/></svg></span>
@@ -219,10 +226,10 @@
     <!-- all socila organization info -->
     <div class="all-socila-info" id="organisation-info" style="margin-bottom:100px;padding-top:0px">
         <h3 class="text-warning bg-gradient-2 p-5"> বাংলাদেশের সকল সংস্থা বা প্রতিষ্ঠান </h3>
-        <div class="mx-5 ">
+        <div class="mx-md-5 mx-lg-5 mx-3" >
 
             <!-- search  -->
-            <div class='org-search bg-white  pt-3 pb-1'>
+            <div class='org-search bg-white  pt-3 pb-1 mx-2'>
                 <form data-org-search-url="{% url 'orgApplication:search' %}" id="searchForm"
                     enctype="multipart/form-data" data-districts-url="{% url 'orgApplication:ajax_load_districts' %}"
                     data-thana-url="{% url 'orgApplication:ajax_load_thana' %}" method="get" novalidate>
@@ -288,7 +295,7 @@
                     {% if organisation_list %}
                     {% for org in organisation_list %}
 
-                    <div class="col-sm-12 col-lg-4 col-md-6 my-2" >
+                    <div class="col-12 col-sm-12 col-lg-4 col-md-6 my-2" >
                        
                         <div class="card shadow border-left-info "
                             style="border-radius:10px; border-left:5px solid #87c1f5;min-height: 400px;">
@@ -447,9 +454,9 @@
     
     window.onload = onPageLoad;
 
-    imagesName = ["{% static 'images/teamwork-1.png'  %}","{% static 'images/teamwork-2.jpg'  %}","{% static 'images/teamwork-3.jpg'  %}"]
+    //colors = ['']
 
-    console.log(imagesName.length)
+    imagesName = ["{% static 'images/teamwork-1.png'  %}","{% static 'images/teamwork-2.jpg'  %}","{% static 'images/teamwork-3.jpg'  %}"]
 
     function onPageLoad() {
         all_date_fileds = document.querySelectorAll('.default-images');
@@ -461,7 +468,7 @@
             if(count == imagesName.length-1)
                 count = 0;
             else count++;
-            console.log(count)
+            
             
         });
     }
