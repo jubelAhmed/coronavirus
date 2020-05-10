@@ -11,6 +11,7 @@ from .filters import OrganisationFilter
 from django.urls import reverse_lazy
 from django.http.response import HttpResponse, HttpResponseRedirect
 import datetime
+from django.views.generic.edit import DeleteView
 
 
 
@@ -277,12 +278,29 @@ def org_project_edit(request,pk):
             project_form.save()
             
             messages.add_message(request, messages.SUCCESS, "Project added successfully!!")
-            return HttpResponseRedirect(reverse("orgApplication:org_profile_detail" ,kwargs={'pk': org_project.organization.pk}))
+            return HttpResponseRedirect(reverse("orgApplication:org_profile_detail" ,kwargs={'pk': org_project.organization.pk  }))
         else:
             messages.add_message(request, messages.ERROR, "Please correct the errors!!")
     
     context = {'form': project_main_form,'organisation':org,'organisation_project':org_project,"profile_bar":'org_project'}
     return render(request, template_name, context)
+
+
+def org_project_delete_view(request, pk): 
+  
+    context ={} 
+  
+    # fetch the object related to passed id 
+    org_project = get_object_or_404(OrgProject, pk = pk) 
+    print(pk)
+  
+    if request.method =="POST": 
+       
+        org_project.delete() 
+       
+        return HttpResponseRedirect(reverse("orgApplication:org_profile_detail" ,kwargs={'pk': org_project.organization.pk  }))
+  
+    return render(request, "delete_view.html", context) 
       
     
     # print(total_org_project_list)

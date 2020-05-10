@@ -56,7 +56,7 @@
                 </li>
 
                 {% if organisation.org_projects.all %}
-                <li>
+                <li id="project-list">
                     <time class="cbp_tmtime" datetime=""><span style="font-size: 18px;" class="large text-primary">প্রজেক্ট </span></time>
                     <div class="cbp_tmicon bg-orange"><i class="zmdi zmdi-label"></i></div>
                     <div class="cbp_tmlabel">
@@ -76,6 +76,7 @@
                                         {% spaceless %}
                                         <p class="card-text ">{{project.details|safe|truncatechars_html:50 }}</p>
                                         {% endspaceless %}
+                                        
                                         {% if project.status is not True %}
                                         <p class="text-info " style="line-height: .5 rem;" >
                                            <i class="fa fa-angle-double-right" aria-hidden="true" ></i>  আপনার প্রজেক্ট আমাদের টিম দ্রুত ভেরিফাই করবে,দয়া করে অপেক্ষা করুণ ।
@@ -87,19 +88,47 @@
                                         <ul class="list-inline ">
                                             
                                             <li class="list-inline-item my-2">
-                                                <a class="text-info"  href="{{ project.get_absolute_url }}">Edit</a>
+                                                <a class="text-info"  href="{{ project.get_absolute_url }}"><span class="badge badge-primary p-2">ইডিট</span></a>
                                             </li>
                                             <li class="list-inline-item my-2">
-                                                <a class="text-danger"  href="">Delete</a>
+                                                <a class="text-danger" href="" data-toggle="modal" data-target="#exampleModalCenter{{project.id}}"><span class="badge badge-danger p-2">মুছে ফেলুন </span> </a>
+                                                
                                             </li>
                                             <li class="list-inline-item my-2 " style="float:right">
-                                                <a class="text-info " href="">Details</a>
+                                                <a class="text-info " href=""><span class="badge badge-info p-2">সম্পুর্ন পড়ুন</span></a>
                                             </li>
                                         </ul>
                                         
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- modal -->
+                            <div class="modal fade" id="exampleModalCenter{{project.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="exampleModalLongTitle">{{project.project_name|title}}</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+                                    <div class="modal-body">
+                                      আপনি কি আপনার প্রজেক্ট মুছে ফেলতে চান ? 
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal">না</button>
+                                      <form method="POST" action="{% url 'orgApplication:org_project_delete' pk=project.pk %}"> 
+                                        <!-- Security token by Django -->
+                                        {% csrf_token %} 
+                                        <button type="submit" class="btn btn-sm btn-danger"> হ্যাঁ </button>
+                                    </div>
+                                        
+                                    </form> 
+                                      
+                                  </div>
+                                </div>
+                              </div>
 
                             {% endfor %}
                         </div> 
@@ -112,5 +141,7 @@
         </div>
     </div>
 </div>
+
+
 
 {% endblock org_profile %}
