@@ -14,6 +14,7 @@ urlpatterns = [
     path('orgadmin/orgprofile/<int:pk>',views.organizationProfile,name='org_profile_detail'),
     path("orgadmin/orgprofile/<int:pk>/orgprojectcreate/", views.org_project_create_view, name='org-project-create'),
     path("org-project/", views.org_project_view, name='org-project-list'),
+    path("org-project/<int:pk>", views.org_project_edit, name='org_project_view_details'),
     path('orgadmin/orgprofile/<int:pk>/edit/',views.edit_org, name='org_edit'),
     path("search/", views.search, name='search'),
     path('ajax/load-districts/', views.load_district, name='ajax_load_districts'),

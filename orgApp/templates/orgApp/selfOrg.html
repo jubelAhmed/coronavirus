@@ -3,6 +3,8 @@
 {% load crispy_forms_tags %}
 
 {% block org_content %}
+<script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+<script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
 
 <div id="registration" class="small-device-content">
 
@@ -36,9 +38,17 @@
         <div class="jumbotron bg-white text-success shadow">
             <!-- {% if new %} -->
             {% if errorMsg %}<p>{{ errorMsg }}</p>{% endif %}
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li class="{{ message.tags }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
             {% if orgForm and org_detail_form %}
             <form action="{% url 'orgApplication:self_org' %}" id="organisationForm" enctype="multipart/form-data" data-districts-url="{% url 'orgApplication:ajax_load_districts' %}" data-thana-url="{% url 'orgApplication:ajax_load_thana' %}" method="post" novalidate>
                 {% csrf_token %}
+                {{ form.media }}   
                 {{ orgForm.name|as_crispy_field }}
                 {{ orgForm.about|as_crispy_field }}
                 <div class="row">

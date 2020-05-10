@@ -116,12 +116,13 @@ def organizationProfile(request,pk):
     context  ={}
     profile_have = False
     if total_org_list > 0:
-        org= Organisation.objects.filter(owner=user,status=True).get(pk=pk)
+        org= Organisation.objects.filter(owner=user).get(pk=pk)
         profile_have = True
         context = {
             'profile_have':profile_have,
             'organisation':org,
             'nbar':'org',
+            'profile_bar':'org_details',
         }
     else: 
         context = {
@@ -161,7 +162,9 @@ def self_org(request: HttpRequest):
                 details = orgForm.save(commit=False)
                 details.organisation = new_org
                 details.save()
-                return HttpResponseRedirect(reverse("orgApplication:org"))
+                messages.add_message(request, messages.SUCCESS, "রেজিস্ট্রেশন করার জন্যে আপনাকে ধন্যবাদ")
+                messages.add_message(request, messages.SUCCESS, "আপানার প্রতিষ্ঠান আমাদের এডমিন গ্রুপ যাচাই করবে, আপনার সকল তথ্য সঠিক হলে আমরা অনুমোদন দিব, আপনাকে কিছুক্ষন অপেক্ষা করতে হবে")
+                return HttpResponseRedirect(reverse("orgApplication:self_org"))
         # context['errorMsg'] = 'Not new user'
         return render(request, 'orgApp/selfOrg.html', context)
 
@@ -172,7 +175,7 @@ def edit_org(request,pk):
     logged_in_user = request.user
     org = get_object_or_404(Organisation, pk=pk)
     org_details = org.org_detail
-    print(org)
+  
     if request.method == 'POST':
         form = forms.OrganisationMainRegForm(request.POST,request.FILES,instance=org)
         orgForm = forms.OrgDetailMainRegForm(request.POST, request.FILES,instance=org_details)
@@ -183,7 +186,7 @@ def edit_org(request,pk):
             details = orgForm.save(commit=False)
             details.organisation = new_org
             details.save()
-            return HttpResponsePermanentRedirect(reverse("orgApplication:org"))
+            return HttpResponseRedirect(reverse("orgApplication:org"))
     else:
         org_form = forms.OrganisationMainRegForm(instance=org)
         org_detail_form = forms.OrgDetailMainRegForm(instance=org_details)
@@ -198,17 +201,6 @@ def edit_org(request,pk):
     
     return render(request,'orgApp/org_edit.html',context=context)
 
-            
-    
-
-    # # user = UserProfile.objects.all()[:1].get()
-    # queryset = Organisation.objects.filter()
-    # # new = True if queryset.count() == 0 else None
-    # new = True
-    # context = {'queryset': queryset, 'errorMsg': None, 'new': new}
-
-    # check for request type
-   
 
 def load_city(request):
     city = City.objects.all().order_by('name')
@@ -224,19 +216,19 @@ def load_thana(request):
     district_id = request.GET.get('district')
     
     thana = Thana.objects.filter(district=district_id).order_by('name')
-    print(thana)
+
     return render(request, 'orgApp/thana_dropdown_list_options.html', {'thana': thana})
 
-
+@login_required
 def org_project_create_view(request,pk):
     template_name = "orgApp/org_project_create.html"
     org = get_object_or_404(Organisation,pk=pk)
-    project_main_form = forms.OrgProjectMainRegForm(request.POST or None, request.FILES or None,instance=org)   
+    project_main_form = forms.OrgProjectMainRegForm(request.POST or None, request.FILES or None )   
     
     if request.method == 'POST':
         if project_main_form.is_valid():
             start_date = project_main_form.cleaned_data['start_date']
-            end_date = project_main_form.cleaned_data['start_date']
+            end_date = project_main_form.cleaned_data['end_date']
             project_name = project_main_form.cleaned_data['project_name']
             selected_area = project_main_form.cleaned_data['selected_area']
             details = project_main_form.cleaned_data['details']
@@ -244,7 +236,7 @@ def org_project_create_view(request,pk):
             budget = project_main_form.cleaned_data['budget']
             OrgProject.objects.create(start_date=start_date,end_date=end_date,project_name=project_name,selected_area=selected_area,details=details,organization=org,budget=budget,project_image=project_image)
             messages.add_message(request, messages.SUCCESS, "Project added successfully!!")
-            print('success')
+            return HttpResponseRedirect(reverse("orgApplication:org_profile_detail" ,kwargs={'pk': pk}))
         else:
             messages.add_message(request, messages.ERROR, "Please correct the errors!!")
     
@@ -265,11 +257,36 @@ def org_project_view(request):
         'nbar': 'home',
     }
     return render(request, 'index_main.html', context)
-        
-        
+     
+@login_required
+def org_project_edit(request,pk):
+    template_name = "orgApp/org_project_edit.html"
+    org_project = get_object_or_404(OrgProject,pk=pk)
+    org = get_object_or_404(Organisation,pk=org_project.organization.pk)
     
-    print(total_org_project_list)
-    return HttpResponse('hello word')
+    project_main_form = forms.OrgProjectMainRegForm(request.POST or None, request.FILES or None,instance=org_project )   
+    
+    if request.method == 'POST':
+        if project_main_form.is_valid():
+            start_date = project_main_form.cleaned_data['start_date']
+            end_date = project_main_form.cleaned_data['end_date']
+            project_form = project_main_form.save(commit = False)
+            project_form.start_date = start_date
+            project_form.end_date = end_date
+            project_form.organization = org
+            project_form.save()
+            
+            messages.add_message(request, messages.SUCCESS, "Project added successfully!!")
+            return HttpResponseRedirect(reverse("orgApplication:org_profile_detail" ,kwargs={'pk': org_project.organization.pk}))
+        else:
+            messages.add_message(request, messages.ERROR, "Please correct the errors!!")
+    
+    context = {'form': project_main_form,'organisation':org,'organisation_project':org_project,"profile_bar":'org_project'}
+    return render(request, template_name, context)
+      
+    
+    # print(total_org_project_list)
+    # return HttpResponse('hello word')
     # divisions = City.objects.all().order_by('name')
     # districts = District.objects.all().order_by('name')
     # thanas = Thana.objects.all().order_by('name')

@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700');
+@import url('https://fonts.maateen.me/solaiman-lipi/font.css');
 
 html, body { margin: 0; padding: 0; overflow-x:hidden}
 
-/* body {
-    color: #262626;
-    font-size: 16px;
+body {
+    
     line-height: 1.8;
-    font-family: 'Montserrat', sans-serif;
-} */
+    font-family: 'Montserrat', sans-serif ;
+}
 
 img {
     vertical-align: baseline;
@@ -222,7 +222,7 @@ a:hover, a:active {
 
 .site-navigation ul li a:hover,
 .site-navigation ul li.current-menu-item a {
-    /* border-bottom: 3px solid #ff5a00; */
+    border-bottom: 3px solid #ff5a00; 
     color: #ff5a00;
 }
 
@@ -990,7 +990,7 @@ ul.tabs-nav .tab-nav.active {
 /*
 # Home Causes
 --------------------------------*/
-.our-causes {
+.our-project {
     position: relative;
     padding: 96px 0;
    
@@ -998,7 +998,7 @@ ul.tabs-nav .tab-nav.active {
     z-index: 99;
 }
 
-.our-causes::after {
+.our-project::after {
     content: '';
     position: absolute;
     top: 0;
@@ -1009,15 +1009,15 @@ ul.tabs-nav .tab-nav.active {
     background: rgba(232,237,238,.8);
 }
 
-.our-causes .cause-wrap {
+.our-project .cause-wrap {
     margin-top: 60px;
 }
 
-.our-causes .cause-wrap figure {
+.our-project .cause-wrap figure {
     position: relative;
 }
 
-.our-causes .cause-wrap figure .figure-overlay {
+.our-project .cause-wrap figure .figure-overlay {
     top: 0;
     left: 0;
     z-index: 99;
@@ -1027,26 +1027,26 @@ ul.tabs-nav .tab-nav.active {
     transition: all .5s;
 }
 
-.our-causes .cause-wrap figure:hover .figure-overlay {
+.our-project .cause-wrap figure:hover .figure-overlay {
     opacity: 1;
     visibility: visible;
 }
 
-.our-causes .cause-content-wrap {
+.our-project .cause-content-wrap {
     padding: 32px;
     background: #fff;
 }
 
-.our-causes .cause-content-wrap .entry-content {
+.our-project .cause-content-wrap .entry-content {
     margin-top: 20px;
 }
 
-.our-causes .cause-wrap .fund-raised {
+.our-project .cause-wrap .fund-raised {
     margin-top: 48px;
 }
 
-.our-causes .swiper-button-next,
-.our-causes .swiper-button-prev {
+.our-project .swiper-button-next,
+.our-project .swiper-button-prev {
     width: 70px;
     height: 70px;
     margin-top: -10px;
@@ -1061,45 +1061,45 @@ ul.tabs-nav .tab-nav.active {
     transition: all .35s;
 }
 
-.our-causes .swiper-button-next {
+.our-project .swiper-button-next {
     right: -120px;
 }
 
-.our-causes .swiper-button-prev {
+.our-project .swiper-button-prev {
     left: -120px;
 }
 
-.our-causes .swiper-button-next span,
-.our-causes .swiper-button-prev span {
+.our-project .swiper-button-next span,
+.our-project .swiper-button-prev span {
     display: block;
     width: 36px;
     padding-top: 15px;
     margin: 0 auto;
 }
 
-.our-causes .swiper-button-next path,
-.our-causes .swiper-button-prev path {
+.our-project .swiper-button-next path,
+.our-project .swiper-button-prev path {
     fill: #fff;
 }
 
-.our-causes .swiper-button-next.swiper-button-disabled,
-.our-causes .swiper-button-prev.swiper-button-disabled {
+.our-project .swiper-button-next.swiper-button-disabled,
+.our-project .swiper-button-prev.swiper-button-disabled {
     opacity: 0;
 }
 
 @media screen and (max-width: 1400px){
-    .our-causes .swiper-button-next {
+    .our-project .swiper-button-next {
         right: 0;
     }
 
-    .our-causes .swiper-button-prev {
+    .our-project .swiper-button-prev {
         left: 0;
     }
 }
 
 @media screen and (max-width: 576px){
-    .our-causes .swiper-button-next,
-    .our-causes .swiper-button-prev {
+    .our-project .swiper-button-next,
+    .our-project .swiper-button-prev {
         display: none;
     }
 }
@@ -1220,7 +1220,7 @@ ul.tabs-nav .tab-nav.active {
     width: 48px;
     height: 48px;
     font-size: 48px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'SolaimanLipi','Montserrat', sans-serif !important;
     font-weight: 500;
     font-style: italic;
     line-height: 1;
@@ -1300,21 +1300,21 @@ ul.tabs-nav .tab-nav.active {
  padding: 96px 0;
 }
 
-.causes-page .our-causes {
+.causes-page .our-project {
     position: relative;
     padding:  70px 0 96px;
     background: none;
 }
 
-.causes-page .our-causes .cause-wrap {
+.causes-page .our-project .cause-wrap {
     margin-top: 36px;
 }
 
-.causes-page .our-causes::after {
+.causes-page .our-project::after {
     display: none;
 }
 
-.causes-page .our-causes .cause-content-wrap {
+.causes-page .our-project .cause-content-wrap {
     border: 1px solid #e0e0e0;
     border-top: 0;
 }

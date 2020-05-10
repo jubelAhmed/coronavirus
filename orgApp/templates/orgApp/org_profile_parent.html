@@ -39,7 +39,7 @@
 
                             {% if user.is_authenticated %}
                             <li>
-                                <a href="{% url 'orgApplication:org-project-create' pk=1 %}"
+                                <a href="{% url 'orgApplication:org-project-create' pk=organisation.pk %}"
                                     class=" {% if profile_bar == 'org_project' %} text-danger {% endif %} "> নতুন প্রজেক্ট তৈরি করুন </a>
                             </li>
 

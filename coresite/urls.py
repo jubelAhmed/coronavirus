@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include,re_path
 
 from django.views.generic import RedirectView
 
@@ -32,6 +32,7 @@ urlpatterns = [
     path('coruna/', include('corunaApp.urls'), name='coruna'),
     path('user/', include('userApp.urls'), name='user'),
     path('accounts/', include('django.contrib.auth.urls')),
+    re_path(r'^ckeditor/', include('ckeditor_uploader.urls')),
     path('', RedirectView.as_view(url='org/')),
     
 ]+static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)

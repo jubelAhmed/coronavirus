@@ -52,13 +52,34 @@ INSTALLED_APPS = [
     'mediumeditor',
     'import_export',
     'django_filters',
-    # 'bootstrap_datepicker',
-
-  
+    'ckeditor',
+    'ckeditor_uploader',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+CKEDITOR_UPLOAD_PATH = "uploads/"
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Bold', 'Italic', 'Underline','Image'],
+            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+            ['Link', 'Unlink'],
+            ['RemoveFormat', 'Source'],
+            
+        ],
+        'stylesSet': [
+            {
+                'name': 'Image-Fluid',
+                'element': 'Image',
+                'attributes': {'class': 'img-fluid'},
+            },
+        ],
+        'contentsCss': 'p img {width:100%;}',
+    }
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

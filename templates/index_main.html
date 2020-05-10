@@ -26,6 +26,10 @@
         background-color: #ddd;
     }
 
+  
+    p > img {
+        display: none;
+    }
 
 </style>
 
@@ -34,7 +38,7 @@
 {% block content %}
 
 
-<div class="bg-white text-dark ">
+<div class="bg-white text-dark " style="font-family: 'Montserrat', sans-serif,'SolaimanLipi' !important ;">
     <!-- fixed bg image  -->
     <div class="px-0 pt-2 ">
         <div class="swiper-slide hero-content-wrap">
@@ -147,8 +151,8 @@
                             {% if all_running_projects %}
                             {% for project in all_running_projects %}
                             
-                            <div class="swiper-slide">
-                                <div class="cause-wrap">
+                            <div class="swiper-slide"  >
+                                <div class="cause-wrap" >
                                     <figure class="m-0 " style="border-bottom:1px solid #ff0">
                                         {% if project.project_image %}
                                         <img class="project-images" src="{{ project.project_image.url }}" height="200px" alt="">
@@ -161,7 +165,7 @@
                                         </div><!-- .figure-overlay -->
                                     </figure>
 
-                                    <div class="cause-content-wrap">
+                                    <div class="cause-content-wrap" style="min-height: 470px;" >
                                         <header class="entry-header d-flex flex-wrap align-items-center">
                                             <h3 class="entry-title w-100 m-0"><a href="#">{{project.project_name}}</a></h3>
                                             <p class="text-muted pt-1" style="font-size: 14px;">{{project.selected_area}}</p>
@@ -171,7 +175,7 @@
                                         </header><!-- .entry-header -->
 
                                         <div class="entry-content mt-0">
-                                            <p class="m-0 p text-dark">{{project.details|truncatechars:300}}</p>
+                                            <p class="m-0 p text-dark" style="font-size: 15px;">{{project.details|safe|truncatechars:300}}</p>
                                         </div><!-- .entry-content -->
                                         
                                         <div class="fund-raised w-100">

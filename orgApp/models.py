@@ -1,5 +1,7 @@
 from django.db import models
 from userApp.models import UserProfile
+from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class Country(models.Model):
@@ -50,7 +52,7 @@ class Category(models.Model):
 class Organisation(models.Model):
     owner = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
-    about = models.TextField()
+    about = RichTextUploadingField()
     org_category = models.ForeignKey(Category, verbose_name="Category", on_delete=models.SET_NULL, null=True,blank=True)
     division = models.ForeignKey(City, on_delete=models.SET_NULL, null=True)
     district = models.ForeignKey(District, on_delete=models.SET_NULL, null=True)
@@ -85,9 +87,9 @@ class OrgDetail(models.Model):
 
 class OrgProject(models.Model):
     project_name = models.CharField(max_length=255)
-    organization = models.ForeignKey(Organisation, on_delete=models.CASCADE)
+    organization = models.ForeignKey(Organisation, on_delete=models.CASCADE,related_name='org_projects')
     selected_area = models.CharField(max_length=255,null=True, blank=True)
-    details = models.TextField()
+    details = RichTextUploadingField()
     duration = models.DateTimeField(null=True, blank=True)
     start_date = models.DateField()
     end_date = models.DateField()
@@ -96,6 +98,15 @@ class OrgProject(models.Model):
     status = models.BooleanField(verbose_name="status",default=False)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        get_latest_by = "-created_date"
+        ordering = ['-created_date']
+
+ 
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('orgApplication:org_project_view_details', args=[str(self.id)])
 
     def __str__(self):
         return self.project_name
