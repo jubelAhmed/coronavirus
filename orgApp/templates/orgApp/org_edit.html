@@ -2,9 +2,10 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
-
 {% block org_profile %}
 
+
+ {{ orgForm.media }}
 
 
 <div class="container">
@@ -14,8 +15,17 @@
         {% if orgForm and org_detail_form %}
         <form action="" id="organisationForm" enctype="multipart/form-data" data-districts-url="{% url 'orgApplication:ajax_load_districts' %}" data-thana-url="{% url 'orgApplication:ajax_load_thana' %}" method="post" novalidate>
             {% csrf_token %}
+            
+          
             {{ orgForm.name|as_crispy_field }}
-            {{ orgForm.about|as_crispy_field }}
+           
+            <div class="row">
+                <div class="col-sm-12" >
+                     {{ orgForm.about|as_crispy_field }}
+                </div>
+            </div>
+
+
             <div class="row">
                 <div class="col-sm-4">
                     {{ orgForm.division|as_crispy_field }}
@@ -64,6 +74,7 @@
                     type="submit" value="রেজিস্ট্রেশন">সংরক্ষণ করুন</button>
             </div>
 
+            
         </form>
 
         {% endif %}

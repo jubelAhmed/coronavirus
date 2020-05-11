@@ -176,9 +176,10 @@ def edit_org(request,pk):
     logged_in_user = request.user
     org = get_object_or_404(Organisation, pk=pk)
     org_details = org.org_detail
-  
+
+    
     if request.method == 'POST':
-        form = forms.OrganisationMainRegForm(request.POST,request.FILES,instance=org)
+        form = forms.OrganisationMainRegForm(request.POST or None,request.FILES or None,instance=org)
         orgForm = forms.OrgDetailMainRegForm(request.POST, request.FILES,instance=org_details)
         if form.is_valid() and orgForm.is_valid():
             new_org = form.save(commit = False)
@@ -189,8 +190,8 @@ def edit_org(request,pk):
             details.save()
             return HttpResponseRedirect(reverse("orgApplication:org"))
     else:
-        org_form = forms.OrganisationMainRegForm(instance=org)
-        org_detail_form = forms.OrgDetailMainRegForm(instance=org_details)
+        org_form = forms.OrganisationMainRegForm(request.POST or None, request.FILES or None,instance=org)
+        org_detail_form = forms.OrgDetailMainRegForm(request.POST or None, request.FILES or None,instance=org_details)
     
     context={
             'orgForm':org_form,
@@ -258,6 +259,19 @@ def org_project_view(request):
         'nbar': 'home',
     }
     return render(request, 'index_main.html', context)
+
+def org_project_details(request,pk):
+  
+    org_project =  get_object_or_404(OrgProject,pk=pk)
+    # all_project_list = OrgProject.objects.filter(organization=org_project.organization)
+    org = get_object_or_404(Organisation,pk=org_project.organization.pk)
+
+    context = {
+        'single_project': org_project,
+        'nbar': 'org',
+        'organisation':org,
+    }
+    return render(request, 'orgApp/org_project_details.html', context)
      
 @login_required
 def org_project_edit(request,pk):

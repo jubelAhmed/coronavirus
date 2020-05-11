@@ -1,9 +1,6 @@
 from django import forms
 from orgApp import models
 from django.utils.translation import ugettext_lazy as _
-from mediumeditor.widgets import MediumEditorTextarea
-from .models import OrgDetail
-# from bootstrap_datepicker_plus import DatePickerInput, TimePickerInput, DateTimePickerInput, MonthPickerInput, YearPickerInput
 
 
 class CategoryMainRegForm(forms.ModelForm):
@@ -17,10 +14,6 @@ class OrganisationMainRegForm(forms.ModelForm):
     class Meta:
         model = models.Organisation
         fields = ('name', 'about', 'division', 'district', 'thana', 'phone', 'email')
-        widgets = {
-            'name': forms.TextInput(attrs={'class': 'textinputclass'}),
-            'about': forms.Textarea(attrs={'class': 'editable medium_editor_textarea postcontent'})
-        }
         labels = {
             'name': _('সংস্থার নাম'),
             'about': _('সংস্থার উদ্দেশ্য ও কাজ'),
@@ -31,11 +24,6 @@ class OrganisationMainRegForm(forms.ModelForm):
             'email': _('ইমেইল'),
 
         }
-    # def save(self, commit=True):
-    #     instance = super().save(commit)
-    #     # set Car reverse foreign key from the Person model
-    #     instance.org_details_set.add(self.cleaned_data['org_details'])
-    #     return instance
 
 
 class OrgDetailMainRegForm(forms.ModelForm):
@@ -81,9 +69,19 @@ class OrgProjectMainRegForm(forms.ModelForm):
             'budget': _('প্রয়োজনীয় প্ররিমান টাকা'),
 
         }
+        
+        # extra code 
     # def __init__(self, *args, **kwargs):
     #     super(AdminDateWidget, self).__init__(*args, **kwargs)
     #     self.input_formats = ('%m/%d/%Y',)
+      # widgets = {
+        #     'name': forms.TextInput(attrs={'class': 'textinputclass'}),
+        # }
+    # def save(self, commit=True):
+    #     instance = super().save(commit)
+    #     # set Car reverse foreign key from the Person model
+    #     instance.org_details_set.add(self.cleaned_data['org_details'])
+    #     return instance
     
         
 

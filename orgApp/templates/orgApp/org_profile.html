@@ -15,7 +15,7 @@
 
 <div class="container mt-5">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 p-0">
             <ul class="cbp_tmtimeline">
                 <li>
                     <time class="cbp_tmtime" datetime=" "><span class="large text-primary">প্রতিষ্ঠানের</span>  <span class="large text-primary">সংক্ষিপ্ত বিবরণ </span></time>
@@ -58,7 +58,7 @@
                 {% if organisation.org_projects.all %}
                 <li id="project-list">
                     <time class="cbp_tmtime" datetime=""><span style="font-size: 18px;" class="large text-primary">প্রজেক্ট </span></time>
-                    <div class="cbp_tmicon bg-orange"><i class="zmdi zmdi-label"></i></div>
+                    <div class="cbp_tmicon bg-secondary"><i class="zmdi zmdi-label"></i></div>
                     <div class="cbp_tmlabel">
                         <div class="row">
                             {% for project in organisation.org_projects.all %}
@@ -86,16 +86,17 @@
                                     </div>
                                     <div class="card-footer bg-white ">
                                         <ul class="list-inline ">
-                                            
+                                            <!--  <a class="text-info"  href="{{ project.get_absolute_url }}"><span class="badge badge-primary p-2">ইডিট</span></a> -->
                                             <li class="list-inline-item my-2">
-                                                <a class="text-info"  href="{{ project.get_absolute_url }}"><span class="badge badge-primary p-2">ইডিট</span></a>
+                                                <a class="text-info"  href="{{ project.get_absolute_url }}/edit"><span class="badge badge-primary p-2">ইডিট</span></a>
+                                                
                                             </li>
                                             <li class="list-inline-item my-2">
                                                 <a class="text-danger" href="" data-toggle="modal" data-target="#exampleModalCenter{{project.id}}"><span class="badge badge-danger p-2">মুছে ফেলুন </span> </a>
                                                 
                                             </li>
                                             <li class="list-inline-item my-2 " style="float:right">
-                                                <a class="text-info " href=""><span class="badge badge-info p-2">সম্পুর্ন পড়ুন</span></a>
+                                                <a class="text-info " href="{{ project.get_absolute_url }}"><span class="badge badge-info p-2">সম্পুর্ন পড়ুন</span></a>
                                             </li>
                                         </ul>
                                         

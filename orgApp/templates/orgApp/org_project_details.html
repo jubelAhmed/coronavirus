@@ -1,0 +1,104 @@
+{% extends 'orgApp/org_profile_parent.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block org_profile %}
+
+
+<div class="container p-5">
+    <div class="row">
+        
+        <div class="col-sm-12 text-center">
+            <div class="text-center">
+                {% if single_project.project_image %}
+                <img width="400" height="200" src="{{single_project.project_image.url}}" class="rounded" alt="...">
+                {% endif %}
+              </div>
+            <h1>{{single_project.project_name}}</h1>
+            {% if single_project.selected_area %}
+              <p>{{single_project.selected_area}}</p>
+            {% endif %}
+        </div>
+        <div class="col-sm-12">
+            <p>{{single_project.details|safe}}</p>
+        </div>
+        <div class="col-sm-12">
+            <div class="row ">
+                <div class="col-sm-6 pt-3">
+                    <p class="text-muted">অনুদানের শেষ তারিখ : {{single_project.end_date}}</p>
+                </div>
+                <div class="col-sm-6 pt-3 text-right">
+                    {% if single_project.budget %}
+                    <p class="text-muted"> বাজেট : {{single_project.budget}}</p>
+                    {% else %}
+                    <p class="text-muted"> বাজেট : উল্লেখ নাই</p>
+                    {% endif %}
+                </div>
+            </div>
+         
+        </div>
+        <div class="col-sm-12 py-4 text-center">
+            {% if project.status is not True %}
+
+            <p class="text-danger " style="line-height: .5 rem;" >
+                <i class="fa fa-angle-double-right" aria-hidden="true" ></i>  আপনার প্রজেক্ট আমাদের টিম দ্রুত ভেরিফাই করবে, দয়া করে অপেক্ষা করুণ ।
+            </p>
+            {% endif %}
+        </div>
+        <div class="col-sm-12 text-right">
+            <ul class="list-inline ">
+                <!--  <a class="text-info"  href="{{ project.get_absolute_url }}"><span class="badge badge-primary p-2">ইডিট</span></a> -->
+                <li class="list-inline-item my-2">
+                    <a class="text-info"  href="{{ single_project.get_absolute_url }}/edit"><span class="badge badge-primary p-2">ইডিট</span></a>
+                    
+                </li>
+                <li class="list-inline-item my-2">
+                    <a class="text-danger" href="" data-toggle="modal" data-target="#exampleModalCenter{{single_project.id}}"><span class="badge badge-danger p-2">মুছে ফেলুন </span> </a>
+                    
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+
+     <!-- modal -->
+     <div class="modal fade" id="exampleModalCenter{{single_project.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">{{single_project.project_name|title}}</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              আপনি কি আপনার প্রজেক্ট মুছে ফেলতে চান ? 
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal">না</button>
+              <form method="POST" action="{% url 'orgApplication:org_project_delete' pk=single_project.pk %}"> 
+                <!-- Security token by Django -->
+                {% csrf_token %} 
+                <button type="submit" class="btn btn-sm btn-danger"> হ্যাঁ </button>
+            </div>
+                
+            </form> 
+              
+          </div>
+        </div>
+      </div>
+</div>
+
+
+
+{% endblock org_profile %}
+
+<!-- 
+    selected_area = models.CharField(max_length=255,null=True, blank=True)
+    details = RichTextUploadingField()
+    duration = models.DateTimeField(null=True, blank=True)
+    start_date = models.DateField()
+    end_date = models.DateField()
+    project_image = models.ImageField(upload_to='images/org/project/', null=True, blank=True)
+    budget = models.CharField(max_length=255,null=True, blank=True)
+ -->
