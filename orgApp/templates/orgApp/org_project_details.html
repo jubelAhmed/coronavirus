@@ -38,8 +38,9 @@
          
         </div>
         <div class="col-sm-12 py-4 text-center">
-            {% if project.status is not True %}
-
+           
+            {% if single_project.status is not True %}
+           
             <p class="text-danger " style="line-height: .5 rem;" >
                 <i class="fa fa-angle-double-right" aria-hidden="true" ></i>  আপনার প্রজেক্ট আমাদের টিম দ্রুত ভেরিফাই করবে, দয়া করে অপেক্ষা করুণ ।
             </p>
@@ -48,6 +49,8 @@
         <div class="col-sm-12 text-right">
             <ul class="list-inline ">
                 <!--  <a class="text-info"  href="{{ project.get_absolute_url }}"><span class="badge badge-primary p-2">ইডিট</span></a> -->
+           
+                {% if request.user.is_authenticated and single_project.organization.owner.id  == request.user.id %}
                 <li class="list-inline-item my-2">
                     <a class="text-info"  href="{{ single_project.get_absolute_url }}/edit"><span class="badge badge-primary p-2">ইডিট</span></a>
                     
@@ -56,6 +59,7 @@
                     <a class="text-danger" href="" data-toggle="modal" data-target="#exampleModalCenter{{single_project.id}}"><span class="badge badge-danger p-2">মুছে ফেলুন </span> </a>
                     
                 </li>
+                {% endif %}
                 
             </ul>
         </div>

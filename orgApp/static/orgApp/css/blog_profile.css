@@ -74,16 +74,17 @@
   .block-menu ul li a {
     border-right: 1px solid #e9eaed;
     float: left;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: bold;
     height: 42px;
-    line-height: 3.0;
+    line-height: 2.0;
     padding: 0 17px;
     position: relative;
     vertical-align: middle;
     white-space: nowrap;
     color:#4b4f56;
     text-transform:capitalize;
+    
   }
   .block-menu ul li:first-child a{
     border-left: 1px solid #e9eaed;
@@ -108,7 +109,7 @@
     }
        
     .fb-profile-block-menu{
-      height: 100px;
+      height: auto;
       position: absolute;
       width:100%;
      }
@@ -123,16 +124,16 @@
     .block-menu ul li a {
       border-right: 1px solid #e9eaed;
       float: left;
-      font-size: 12px;
+      font-size: 18px;
       font-weight: bold;
       height: 42px;
-      line-height: 3.0;
+      line-height: 2.0;
       padding: 0 8px;
       position: relative;
       vertical-align: middle;
       color:#4b4f56;
       text-transform:capitalize;
-      background-color: azure;
+      
     }
     .all_profile_view{
       margin-top:110px;
@@ -142,5 +143,12 @@
     }
     .second-col-2{
       border-right: 4px solid orange;
+    }
+
+    .project-details{
+      margin-top:50px;
+    }
+    .org-profile-sm{
+      padding-top: 15px;
     }
   }

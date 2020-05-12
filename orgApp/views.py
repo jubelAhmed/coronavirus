@@ -260,6 +260,7 @@ def org_project_view(request):
     }
     return render(request, 'index_main.html', context)
 
+@login_required
 def org_project_details(request,pk):
   
     org_project =  get_object_or_404(OrgProject,pk=pk)
@@ -272,6 +273,19 @@ def org_project_details(request,pk):
         'organisation':org,
     }
     return render(request, 'orgApp/org_project_details.html', context)
+
+
+def org_project_public_details(request,pk):
+  
+    org_project =  get_object_or_404(OrgProject,pk=pk)
+    # all_project_list = OrgProject.objects.filter(organization=org_project.organization)
+    org = get_object_or_404(Organisation,pk=org_project.organization.pk)
+
+    context = {
+        'single_project': org_project,
+        'organisation':org,
+    }
+    return render(request, 'orgApp/org_project_public_details.html', context)
      
 @login_required
 def org_project_edit(request,pk):

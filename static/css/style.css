@@ -4,9 +4,9 @@
 html, body { margin: 0; padding: 0; overflow-x:hidden}
 
 body {
-    
-    line-height: 1.8;
-    font-family: 'Montserrat', sans-serif ;
+    font-size: 18px;
+    line-height: 30px;
+    font-family: 'SolaimanLipi','Montserrat', sans-serif !important;
 }
 
 img {
@@ -974,8 +974,8 @@ ul.tabs-nav .tab-nav.active {
 .cause-content-wrap .entry-content {
     margin-top: 28px;
     margin-bottom: 0;
-    font-size: 14px;
-    color: #929191;
+    font-size: 15px;
+    color: #292929;
 }
 
 .cause-wrap .fund-raised {
@@ -990,7 +990,7 @@ ul.tabs-nav .tab-nav.active {
 /*
 # Home Causes
 --------------------------------*/
-.our-project {
+.our-causes {
     position: relative;
     padding: 96px 0;
    
@@ -998,7 +998,7 @@ ul.tabs-nav .tab-nav.active {
     z-index: 99;
 }
 
-.our-project::after {
+.our-causes::after {
     content: '';
     position: absolute;
     top: 0;
@@ -1009,15 +1009,15 @@ ul.tabs-nav .tab-nav.active {
     background: rgba(232,237,238,.8);
 }
 
-.our-project .cause-wrap {
+.our-causes .cause-wrap {
     margin-top: 60px;
 }
 
-.our-project .cause-wrap figure {
+.our-causes .cause-wrap figure {
     position: relative;
 }
 
-.our-project .cause-wrap figure .figure-overlay {
+.our-causes .cause-wrap figure .figure-overlay {
     top: 0;
     left: 0;
     z-index: 99;
@@ -1027,26 +1027,26 @@ ul.tabs-nav .tab-nav.active {
     transition: all .5s;
 }
 
-.our-project .cause-wrap figure:hover .figure-overlay {
+.our-causes .cause-wrap figure:hover .figure-overlay {
     opacity: 1;
     visibility: visible;
 }
 
-.our-project .cause-content-wrap {
+.our-causes .cause-content-wrap {
     padding: 32px;
     background: #fff;
 }
 
-.our-project .cause-content-wrap .entry-content {
+.our-causes .cause-content-wrap .entry-content {
     margin-top: 20px;
 }
 
-.our-project .cause-wrap .fund-raised {
+.our-causes .cause-wrap .fund-raised {
     margin-top: 48px;
 }
 
-.our-project .swiper-button-next,
-.our-project .swiper-button-prev {
+.our-causes .swiper-button-next,
+.our-causes .swiper-button-prev {
     width: 70px;
     height: 70px;
     margin-top: -10px;
@@ -1061,45 +1061,45 @@ ul.tabs-nav .tab-nav.active {
     transition: all .35s;
 }
 
-.our-project .swiper-button-next {
+.our-causes .swiper-button-next {
     right: -120px;
 }
 
-.our-project .swiper-button-prev {
+.our-causes .swiper-button-prev {
     left: -120px;
 }
 
-.our-project .swiper-button-next span,
-.our-project .swiper-button-prev span {
+.our-causes .swiper-button-next span,
+.our-causes .swiper-button-prev span {
     display: block;
     width: 36px;
     padding-top: 15px;
     margin: 0 auto;
 }
 
-.our-project .swiper-button-next path,
-.our-project .swiper-button-prev path {
+.our-causes .swiper-button-next path,
+.our-causes .swiper-button-prev path {
     fill: #fff;
 }
 
-.our-project .swiper-button-next.swiper-button-disabled,
-.our-project .swiper-button-prev.swiper-button-disabled {
+.our-causes .swiper-button-next.swiper-button-disabled,
+.our-causes .swiper-button-prev.swiper-button-disabled {
     opacity: 0;
 }
 
 @media screen and (max-width: 1400px){
-    .our-project .swiper-button-next {
+    .our-causes .swiper-button-next {
         right: 0;
     }
 
-    .our-project .swiper-button-prev {
+    .our-causes .swiper-button-prev {
         left: 0;
     }
 }
 
 @media screen and (max-width: 576px){
-    .our-project .swiper-button-next,
-    .our-project .swiper-button-prev {
+    .our-causes .swiper-button-next,
+    .our-causes .swiper-button-prev {
         display: none;
     }
 }
@@ -1300,21 +1300,21 @@ ul.tabs-nav .tab-nav.active {
  padding: 96px 0;
 }
 
-.causes-page .our-project {
+.causes-page .our-causes {
     position: relative;
     padding:  70px 0 96px;
     background: none;
 }
 
-.causes-page .our-project .cause-wrap {
+.causes-page .our-causes .cause-wrap {
     margin-top: 36px;
 }
 
-.causes-page .our-project::after {
+.causes-page .our-causes::after {
     display: none;
 }
 
-.causes-page .our-project .cause-content-wrap {
+.causes-page .our-causes .cause-content-wrap {
     border: 1px solid #e0e0e0;
     border-top: 0;
 }
@@ -1999,7 +1999,11 @@ ul.tabs-nav .tab-nav.active {
 --------------------------------------------------------------*/
 .footer-widgets {
     position: relative;
-    padding: 96px 0 90px;
+
+    padding-top:96px;
+    padding-left:90px;
+    padding-right:90px;
+    padding-bottom:20px;
     font-weight: 500;
     color: #929191;
    

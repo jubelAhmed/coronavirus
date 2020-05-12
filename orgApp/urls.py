@@ -18,6 +18,7 @@ urlpatterns = [
     path("org-project/", views.org_project_view, name='org-project-list'),
     path("org-project/<int:pk>/edit", views.org_project_edit, name='org_project_view_edit'),
     path("org-project/<int:pk>", views.org_project_details, name='org_project_view_details'),
+    path("org-project/public/<int:pk>", views.org_project_public_details, name='org_project_public_view_details'),
     path("org-project/<int:pk>/delete", views.org_project_delete_view, name='org_project_delete'),
    
     

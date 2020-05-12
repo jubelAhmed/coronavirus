@@ -26,11 +26,15 @@
         background-color: #ddd;
     }
 
-  
-    p > img {
+    p>img {
         display: none;
     }
 
+    .static-p {
+        font-size: 18px;
+        line-height: 30px;
+        margin-bottom: 16px;
+    }
 </style>
 
 {% endblock script %}
@@ -38,7 +42,7 @@
 {% block content %}
 
 
-<div class="bg-white text-dark " style="font-family: 'Montserrat', sans-serif,'SolaimanLipi' !important ;">
+<div class="bg-white text-dark " style="font-family: 'SolaimanLipi','Montserrat', sans-serif !important ;">
     <!-- fixed bg image  -->
     <div class="px-0 pt-2 ">
         <div class="swiper-slide hero-content-wrap">
@@ -75,11 +79,13 @@
             <div class="jumbotron bg-white py-0">
                 <ul class="list-group list-group-flush " style="color:#FF5A00">
                     <li class="list-group-item ">
-                        <h5><i class="fas fa-arrow-alt-circle-right"></i> এখানে বাংলাদেশের সকল বিশ্বস্ত সামাজিক কল্যান মূলক
+                        <h5><i class="fas fa-arrow-alt-circle-right"></i> এখানে বাংলাদেশের সকল বিশ্বস্ত সামাজিক কল্যান
+                            মূলক
                             প্রতিষ্ঠান গুলো একসাথে পাওয়া যাবে ।</h5>
                     </li>
                     <li class="list-group-item">
-                        <h5><i class="fas fa-arrow-alt-circle-right"></i> এখানে আপনি আপানার নিজের এলাকার সংস্থা গুলো খুজে
+                        <h5><i class="fas fa-arrow-alt-circle-right"></i> এখানে আপনি আপানার নিজের এলাকার সংস্থা গুলো
+                            খুজে
                             পাবেন সহজে ।</h5>
                     </li>
                     <li class="list-group-item">
@@ -95,10 +101,10 @@
                 <div class="col-12 col-md-6 col-lg-4 mt-4 mt-lg-0 ">
                     <div class="card mx-2" style="height:10rem ;border:2px double blue">
                         <div class="card-body">
-                            <h6 style="color:blue;line-height: 1.5rem;letter-spacing: 0rem;">যে প্রতিষ্ঠান গুলো সামাজিক
+                            <p class="static-p" style="color:blue;">যে প্রতিষ্ঠান গুলো সামাজিক
                                 সহায়তা করে থাকে ।
                                 বিপদে পাশে দাঁড়ায়
-                                এবং বর্তমানে করোনা মোকাবিলার জন্যে এই প্রতিষ্ঠান গুলো উদ্যোগ নিয়েছে । </h6>
+                                এবং বর্তমানে করোনা মোকাবিলার জন্যে এই প্রতিষ্ঠান গুলো উদ্যোগ নিয়েছে । </p>
                         </div>
                     </div>
                 </div>
@@ -107,9 +113,9 @@
                     <div class="card mx-2" style="height:10rem;border:2px double green">
                         <div class="card-body">
 
-                            <h6 style="color:green;line-height: 1.5rem;">আপনারা এই সংস্থা গুলোকে সহায়তা করুন যাতে তারা
+                            <p class="static-p" style="color:green;">আপনারা এই সংস্থা গুলোকে সহায়তা করুন যাতে তারা
                                 যথা সময়ে মানুষের
-                                কাছে পৌঁছে দিতে পারে । </h6>
+                                কাছে পৌঁছে দিতে পারে । </p>
                         </div>
                     </div>
                 </div>
@@ -117,10 +123,10 @@
                     <div class="card mx-2" style="height:10rem;border:2px double orange">
                         <div class="card-body">
 
-                            <h6 style="color:orange;line-height: 1.5rem;">
+                            <p class="static-p" style="color:orange;">
                                 সংস্থা গুলোর প্রয়োজনীও তথ্য যাচাই করে আপানারা নিজ উদ্যোগে পাশে দাড়ান। আপানারা দান করতে
                                 চাইলে সংস্থা গুলোর ফোন নাম্বারে যোগাযোগ করে সঠিক তথ্য যাচাই করে নিন।
-                            </h6>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -132,14 +138,14 @@
 
     <!-- all running project -->
 
-    <div class="our-project">
+    <div class="our-causes">
         <div class="container">
             <div class="row">
                 <div class="coL-12">
                     <div class="section-heading">
                         <h2 class="entry-title ml-3">চলতি প্রজেক্ট</h2>
-                        
-                        
+
+
                     </div><!-- .section-heading -->
                 </div><!-- .col -->
             </div><!-- .row -->
@@ -150,53 +156,79 @@
                         <div class="swiper-wrapper">
                             {% if all_running_projects %}
                             {% for project in all_running_projects %}
-                            
-                            <div class="swiper-slide"  >
-                                <div class="cause-wrap" >
+
+                            <div class="swiper-slide">
+                                <div class="cause-wrap">
                                     <figure class="m-0 " style="border-bottom:1px solid #ff0">
                                         {% if project.project_image %}
-                                        <img class="project-images" src="{{ project.project_image.url }}" height="200px" alt="">
+                                        <img class="default-images project-images "
+                                            src="{{ project.project_image.url }}" height="180" alt="img">
                                         {% else %}
-                                        <img class="default-images" src="" height="200px" alt="">
+                                        <img class="default-images project-images-not" src="#" height="180" alt="img">
                                         {% endif %}
 
-                                        <div class="figure-overlay d-flex justify-content-center align-items-center position-absolute w-100 h-100">
+                                        <div
+                                            class="figure-overlay d-flex justify-content-center align-items-center position-absolute w-100 h-100">
                                             <a href="#" class="btn gradient-bg mr-2">দান করুন</a>
                                         </div><!-- .figure-overlay -->
                                     </figure>
 
-                                    <div class="cause-content-wrap" style="min-height: 470px;" >
+                                    <div class="cause-content-wrap" style="min-height: 540px;">
                                         <header class="entry-header d-flex flex-wrap align-items-center">
-                                            <h3 class="entry-title w-100 m-0"><a href="#">{{project.project_name}}</a></h3>
-                                            <p class="text-muted pt-1" style="font-size: 14px;">{{project.selected_area}}</p>
-                                            
-                                            
-                                            
+                                            <h3 class="entry-title w-100 m-0"><a href="#"
+                                                    style="color:#4CAF50">{{project.project_name}}</a>
+                                            </h3>
+                                            <p class="text-muted pt-1" style="">
+                                                {{project.selected_area}}
+                                            </p>
+
+
+
                                         </header><!-- .entry-header -->
 
                                         <div class="entry-content mt-0">
-                                            <p class="m-0 p text-dark" style="font-size: 15px;">{{project.details|safe|truncatechars:300}}</p>
+                                            <div class="m-0 p text-dark" style="font-size: 18px;
+                                            line-height: 30px;
+                                            margin-bottom: 16px;">
+                                                {{project.details|safe|truncatechars:250 }}
+                                            </div>
                                         </div><!-- .entry-content -->
-                                        
+
+                                        <div class="entry-content pt-2">
+                                            <p class="text-secondary ml-0" style="font-size: 14px;">উত্তোলনের শেষ
+                                                তারিখ: {{project.end_date}}
+                                            </p>
+                                        </div>
+
                                         <div class="fund-raised w-100">
-                                            <!-- <div class="fund-raised-bar-1 barfiller">
+                                            <div class="fund-raised-bar-1 barfiller ">
                                                 <div class="tipWrap">
                                                     <span class="tip"></span>
                                                 </div>
 
-                                                <span class="fill" data-percentage="83"></span>
-                                            </div> -->
-                                            <p class="text-dark ml-0" style="font-size: 14px;">উত্তোলনের শেষ তারিখ: {{project.end_date}}</p>
+                                                <span class="fill" data-percentage="5">
 
-                                            <div class="fund-raised-details d-flex flex-wrap justify-content-between align-items-center">
+                                                </span>
+                                            </div>
 
-                                                <div class="fund-raised-goal mt-4 text-info">
+
+                                            <div class="fund-raised-details d-flex flex-wrap justify-content-between align-items-center mt-3"
+                                                style="font-size: 16px;">
+
+                                                <div class="fund-raised-total mt-4 text-success ">
+                                                    <span class=""> উত্তোলিত: <strong> ১৫০০০ </strong> &#2547;</span>
+                                                </div>
+
+                                                <div class="fund-raised-goal mt-4 text-danger">
                                                     {% if project.budget  %}
-                                                    বাজেট : {{project.budget}} টাকা 
+                                                    <span>লক্ষ: <strong>{{project.budget}}</strong> &#2547;</span>
                                                     {% else %}
-                                                    বাজেট উল্লেখ নেই 
+                                                    <span> বাজেট উল্লেখ নেই</span>
                                                     {% endif %}
-                                                </div><!-- .fund-raised-goal -->
+                                                </div>
+
+
+
                                             </div><!-- .fund-raised-details -->
                                         </div><!-- .fund-raised -->
                                     </div><!-- .cause-content-wrap -->
@@ -204,7 +236,7 @@
                             </div><!-- .swiper-slide -->
                             {% endfor %}
                             {%endif %}
-                           
+
                         </div><!-- .swiper-wrapper -->
 
                     </div><!-- .swiper-container -->
@@ -216,21 +248,33 @@
                     </div>
                     <!-- Add Arrows -->
                     <div class="swiper-button-next flex justify-content-center align-items-center">
-                        <span><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1171 960q0 13-10 23l-466 466q-10 10-23 10t-23-10l-50-50q-10-10-10-23t10-23l393-393-393-393q-10-10-10-23t10-23l50-50q10-10 23-10t23 10l466 466q10 10 10 23z"/></svg></span>
+                        <span><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M1171 960q0 13-10 23l-466 466q-10 10-23 10t-23-10l-50-50q-10-10-10-23t10-23l393-393-393-393q-10-10-10-23t10-23l50-50q10-10 23-10t23 10l466 466q10 10 10 23z" />
+                            </svg></span>
                     </div>
 
                     <div class="swiper-button-prev flex justify-content-center align-items-center">
-                        <span><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1203 544q0 13-10 23l-393 393 393 393q10 10 10 23t-10 23l-50 50q-10 10-23 10t-23-10l-466-466q-10-10-10-23t10-23l466-466q10-10 23-10t23 10l50 50q10 10 10 23z"/></svg></span>
+                        <span><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M1203 544q0 13-10 23l-393 393 393 393q10 10 10 23t-10 23l-50 50q-10 10-23 10t-23-10l-466-466q-10-10-10-23t10-23l466-466q10-10 23-10t23 10l50 50q10 10 10 23z" />
+                            </svg></span>
                     </div>
                 </div><!-- .col -->
+
             </div><!-- .row -->
+
         </div><!-- .container -->
     </div><!-- .our-causes -->
+
+
+
+
 
     <!-- all socila organization info -->
     <div class="all-socila-info" id="organisation-info" style="margin-bottom:100px;padding-top:0px">
         <h3 class="text-warning bg-gradient-2 p-5"> বাংলাদেশের সকল সংস্থা বা প্রতিষ্ঠান </h3>
-        <div class="mx-md-5 mx-lg-5 mx-3" >
+        <div class="mx-md-5 mx-lg-5 mx-3">
 
             <!-- search  -->
             <div class='org-search bg-white  pt-3 pb-1 mx-2'>
@@ -299,35 +343,22 @@
                     {% if organisation_list %}
                     {% for org in organisation_list %}
 
-                    <div class="col-12 col-sm-12 col-md-6 col-lg-4  my-2" >
-                       
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 my-2">
+
                         <div class="card shadow border-left-info "
-                            style="border-radius:10px; border-left:5px solid #87c1f5;min-height: 400px;">
+                            style="border-radius:10px; border-left:5px solid #87c1f5;border-right:5px solid #87c1f5;min-height: 350px;">
                             <div class="card-body">
                                 <h4 class="card-title text-primary"> {{ org.name}}</h4>
                                 <h6 class="card-subtitle mb-2 text-muted pb-2"> {{ org.thana}}, {{ org.district}},
-                                    {{ org.division}}</h6>
-                                <p class="card-text"> {{ org.about|truncatechars:255 }}
-                                </p>
-                                <div class="row">
-                                    <div class="col-sm-5">
-                                        <h6 class="text-success"> যোগাযোগ </h6>
+                                    {{ org.division}} </h6>
 
-                                        <p class="text-success"> {{ org.phone}} </p>
-
-                                    </div>
-                                    <!-- <div class="col-sm-7">
-                                        <h6 class="text-danger"> একাউন্ট </h6>
-    
-                                            <p class="text-danger"><strong class="text-danger">Bkash :</strong> 01742234926
-                                            </p>
-    
-                                            </ul>
-                                    </div> -->
+                                <div class="card-text">
+                                    {{ org.about|safe|truncatechars:200 }}
                                 </div>
-                                <!-- <div class="col text-center"><i class="fas fa-clipboard-list fa-3x text-secondary" aria-hidden="true"></i></div> -->
+
+                                <!-- <div class="col text-right" style="><i class="fas fa-clipboard-list fa-3x text-secondary" aria-hidden="true"></i></div> -->
                             </div>
-                            <div class="card-footer  ">
+                            <div class="card-footer ">
 
                                 <a href=" {{ org.org_detail.facebook_url}}" class="card-link  text-primary"> <i
                                         class="fab fa-facebook "></i>
@@ -336,23 +367,21 @@
                                 <a href="{{ org.org_detail.website_ur}}" class="card-link  text-primary"><i
                                         class="fas fa-globe ">ওয়েব</i></a>
                                 {% endif %}
-                                <a href="{{ org.pk }}" class="card-link  text-danger"
+                                <a href="{% url 'orgApplication:org-detail' pk=org.pk %}" class="card-link  text-danger"
                                     style="float:right;text-decoration: underline;">বিস্তারিত</a>
                             </div>
                         </div>
-                        
+
                     </div>
-               
-
-                {% endfor %}
-             {% endif %}
-
-            </div><!-- .row -->
-        </div>
-    </div><!-- .container -->
-</div><!-- .home-page-icon-boxes -->
 
 
+                    {% endfor %}
+                    {% endif %}
+
+                </div><!-- .row -->
+            </div>
+        </div><!-- .container -->
+    </div><!-- .home-page-icon-boxes -->
 
 
 </div>
@@ -455,38 +484,89 @@
 
     });
 
-    
+
     window.onload = onPageLoad;
 
     //colors = ['']
 
-    imagesName = ["{% static 'images/teamwork-1.png'  %}","{% static 'images/teamwork-2.jpg'  %}","{% static 'images/teamwork-3.jpg'  %}"]
+    imagesName = ["{% static 'images/teamwork-1.png'  %}", "{% static 'images/teamwork-2.jpg'  %}",
+        "{% static 'images/teamwork-3.jpg'  %}"
+    ]
 
     function onPageLoad() {
-        all_date_fileds = document.querySelectorAll('.default-images');
+        all_date_fileds = document.querySelectorAll('.project-images-not');
         count = 0;
-        all_date_fileds.forEach(function(dateItem) {
-            
+        all_date_fileds.forEach(function (dateItem) {
+
             dateItem.setAttribute("src", imagesName[count]);
 
-            if(count == imagesName.length-1)
+            if (count == imagesName.length - 1)
                 count = 0;
             else count++;
-            
-            
+
+
         });
     }
-    
-        
-    
-    
 </script>
 {% endblock content %}
 
 {% block footer %}
 
-</footer>
+<footer class="site-footer">
+    <div class="footer-widgets">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="foot-about">
+                        <!-- <h2><a class="foot-logo" href="#"><img src="images/foot-logo.png" alt=""></a></h2> -->
+
+                        <span class="text-info">আমরা আপনাদের সেবা দেয়ার জন্যে সর্বদা প্রস্তত । আপনারা যদি কোন ধরনের হয়রানীর স্বীকার হন তাহলে আমাদের সাথে যোগাযোগ করবেন ।</span>
+                        <!-- <ul class="d-flex flex-wrap align-items-center">
+                            <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                            <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        </ul> -->
+                    </div><!-- .foot-about -->
+                </div><!-- .col -->
+                
+                <div class="col-12 col-md-6 col-lg-3 mt-5 mt-md-0 ">
+                    <div class="foot-contact">
+                        <h2>যোগাযোগ</h2>
+
+                        <ul>
+                            <li><i class="fa fa-phone"></i><span>+88 0130704781</span></li>
+                            <li><i class="fa fa-envelope"></i><span>osbangla@.gmail.com</span></li>
+                            <li><i class="fa fa-map-marker"></i><span>Dhaka Bangladesh</span></li>
+                        </ul>
+                    </div><!-- .foot-contact -->
+
+                </div><!-- .col -->
+            </div><!-- .row -->
+            <div class="pt-4 text-right">
+                <span class="text-muted" style="font-size: 14px;"> এখানে ওপেন সোর্স ডেভেলপার দের আমন্ত্রন রইল । কেউ আমাদের সাথে যোগ দিতে চাইলে এখানে যোগাযোগ করূন </span>
+                <a href="{% url 'index' %}"><button class="btn btn-sm btn-success">ওপেন সোর্স যোগদান
+                </button></a>
+            </div>
+        </div><!-- .container -->
+    </div><!-- .footer-widgets -->
+
+    <div class="footer-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <p class="m-0">
+                        Copyright &copy;<script>
+                            document.write(new Date().getFullYear());
+                        </script> All rights reserved | This is made for bangladesh <i class="fa fa-heart-o"
+                            aria-hidden="true"></i> by <a href="" target="_blank">Sohayota Team</a>
+                    </p>
+                </div>
+            </div><!-- .row -->
+        </div><!-- .container -->
+    </div><!-- .footer-bar -->
+</footer><!-- .site-footer -->
 
 {% endblock footer %}
-
-

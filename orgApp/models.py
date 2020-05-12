@@ -2,6 +2,7 @@ from django.db import models
 from userApp.models import UserProfile
 from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
+import datetime
 
 
 class Country(models.Model):
@@ -64,6 +65,14 @@ class Organisation(models.Model):
     updated_date = models.DateTimeField(auto_now=True)
     status = models.BooleanField(default=False)
     objects = models.QuerySet()
+    
+    def get_all_successful_projects(self):
+        org_projects = self.org_projects.filter(status=True, end_date__lte=datetime.date.today()).order_by('end_date')
+        return org_projects
+    def get_all_running_projects(self):
+        org_projects = self.org_projects.filter(status=True, end_date__gte=datetime.date.today()).order_by('end_date')
+        return org_projects
+
 
     def __str__(self):
         return f"{self.name}"
@@ -107,6 +116,7 @@ class OrgProject(models.Model):
     def get_absolute_url(self):
         from django.urls import reverse
         return reverse('orgApplication:org_project_view_details', args=[str(self.id)])
-
+    
+   
     def __str__(self):
         return self.project_name

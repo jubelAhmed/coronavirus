@@ -14,131 +14,133 @@
 
 
 <div class="container mt-5">
-    <div class="row">
-        <div class="col-md-12 p-0">
-            <ul class="cbp_tmtimeline">
-                <li>
-                    <time class="cbp_tmtime" datetime=" "><span class="large text-primary">প্রতিষ্ঠানের</span>  <span class="large text-primary">সংক্ষিপ্ত বিবরণ </span></time>
-                    <div class="cbp_tmicon bg-success"><i class="zmdi zmdi-account"></i></div>
-                    <div class="cbp_tmlabel empty "> <span class="text-dark large">{{organisation.about|safe}}</span> </div>
-                </li>
-                <li>
-                    <time class="cbp_tmtime" datetime=""><span style="font-size: 18px;" class="large text-primary">যোগাযোগের ঠিকানা </span> <span class="large text-primary " ></span></time>
-                    <div class="cbp_tmicon bg-info"><i class="zmdi zmdi-label"></i></div>
-                    <div class="cbp_tmlabel">
-                       <div class="row align-items-center">
-                           <div class="col-sm-5 p-2 m-2 align-self-center" style="border-right: 4px solid #2CA8FF;">
-                               <p> <strong>মোবাইল : </strong> {{organisation.phone}} </p>
-                               <p> <strong>ইমেইল : </strong> <a href="mailto:{{organisation.email}}">{{organisation.email}}</a> </p>
+    <div class="project-details">
+        <div class="row project-details">
+            <div class="col-md-12 p-0">
+                <ul class="cbp_tmtimeline">
+                    <li>
+                        <time class="cbp_tmtime" datetime=" "><span class="large text-primary">প্রতিষ্ঠানের</span>  <span class="large text-primary">সংক্ষিপ্ত বিবরণ </span></time>
+                        <div class="cbp_tmicon bg-success"><i class="zmdi zmdi-account"></i></div>
+                        <div class="cbp_tmlabel empty "> <span class="text-dark large">{{organisation.about|safe}}</span> </div>
+                    </li>
+                    <li>
+                        <time class="cbp_tmtime" datetime=""><span style="font-size: 18px;" class="large text-primary">যোগাযোগের ঠিকানা </span> <span class="large text-primary " ></span></time>
+                        <div class="cbp_tmicon bg-info"><i class="zmdi zmdi-label"></i></div>
+                        <div class="cbp_tmlabel">
+                           <div class="row align-items-center">
+                               <div class="col-sm-5 p-2 m-2 align-self-center" style="border-right: 4px solid #2CA8FF;">
+                                   <p> <strong>মোবাইল : </strong> {{organisation.phone}} </p>
+                                   <p> <strong>ইমেইল : </strong> <a href="mailto:{{organisation.email}}">{{organisation.email}}</a> </p>
+                               </div>
+                               <div class="col-sm-5 p-2 m-2 align-self-center second-col-1">
+                                <p> <strong>ওয়েবসাইট : </strong> <a href="{{ organisation.org_detail.website_url}} ">{{organisation.org_detail.website_url}} </a> </p>
+                                <p> <strong>ফেসবুক পেজ : </strong> <a href="{{organisation.org_detail.facebook_url}} ">{{organisation.org_detail.facebook_url}} </a></p>
+                               </div>
                            </div>
-                           <div class="col-sm-5 p-2 m-2 align-self-center second-col-1">
-                            <p> <strong>ওয়েবসাইট : </strong> <a href="{{ organisation.org_detail.website_url}} ">{{organisation.org_detail.website_url}} </a> </p>
-                            <p> <strong>ফেসবুক পেজ : </strong> <a href="{{organisation.org_detail.facebook_url}} ">{{organisation.org_detail.facebook_url}} </a></p>
+                        </div>
+                    </li>
+                    <li>
+                        <time class="cbp_tmtime" datetime=""><span style="font-size: 18px;" class="large text-primary">প্রতিষ্ঠানের অবস্থান </span></time>
+                        <div class="cbp_tmicon bg-orange"><i class="zmdi zmdi-label"></i></div>
+                        <div class="cbp_tmlabel">
+                           <div class="row">
+                               <div class="col-sm-5 p-2 m-2" style="border-right: 4px solid orange;">
+                                   <p> <strong>বিভাগ : </strong> {{organisation.division}} </p>
+                                   <p> <strong>জেলা : </strong> {{organisation.district}} </p>
+                               </div>
+                               <div class="col-sm-5 p-2 m-2 second-col-2">
+                                <p> <strong>থানা : </strong> {{organisation.thana}} </p>
+                                <p> <strong>পোস্ট কোড : </strong> {{organisation.postal_area}} </p>
+                               </div>
                            </div>
-                       </div>
-                    </div>
-                </li>
-                <li>
-                    <time class="cbp_tmtime" datetime=""><span style="font-size: 18px;" class="large text-primary">প্রতিষ্ঠানের অবস্থান </span></time>
-                    <div class="cbp_tmicon bg-orange"><i class="zmdi zmdi-label"></i></div>
-                    <div class="cbp_tmlabel">
-                       <div class="row">
-                           <div class="col-sm-5 p-2 m-2" style="border-right: 4px solid orange;">
-                               <p> <strong>বিভাগ : </strong> {{organisation.division}} </p>
-                               <p> <strong>জেলা : </strong> {{organisation.district}} </p>
-                           </div>
-                           <div class="col-sm-5 p-2 m-2 second-col-2">
-                            <p> <strong>থানা : </strong> {{organisation.thana}} </p>
-                            <p> <strong>পোস্ট কোড : </strong> {{organisation.postal_area}} </p>
-                           </div>
-                       </div>
-                    </div>
-                </li>
-
-                {% if organisation.org_projects.all %}
-                <li id="project-list">
-                    <time class="cbp_tmtime" datetime=""><span style="font-size: 18px;" class="large text-primary">প্রজেক্ট </span></time>
-                    <div class="cbp_tmicon bg-secondary"><i class="zmdi zmdi-label"></i></div>
-                    <div class="cbp_tmlabel">
-                        <div class="row">
-                            {% for project in organisation.org_projects.all %}
-                            
-                            <div class="col-sm-12 col-md-6 col-lg-6 my-2">
-                                <div class="card" style="">
-            
-                                    {% if project.project_image %}
-                                        <img class="card-img-top" src="{{ project.project_image.url }}" height="120px" alt="">
-                                        {% else %}
-                                        <img class="card-img-top" src="" height="120px" alt="">
-                                    {% endif %}
-                                    <div class="card-body" style="min-height: 200px;">
-                                        <h5 class="card-title">{{project.project_name|title}}</h5>
-                                        {% spaceless %}
-                                        <p class="card-text ">{{project.details|safe|truncatechars_html:50 }}</p>
-                                        {% endspaceless %}
-                                        
-                                        {% if project.status is not True %}
-                                        <p class="text-info " style="line-height: .5 rem;" >
-                                           <i class="fa fa-angle-double-right" aria-hidden="true" ></i>  আপনার প্রজেক্ট আমাদের টিম দ্রুত ভেরিফাই করবে,দয়া করে অপেক্ষা করুণ ।
-                                        </p>
+                        </div>
+                    </li>
+    
+                    {% if organisation.org_projects.all %}
+                    <li id="project-list">
+                        <time class="cbp_tmtime" datetime=""><span style="font-size: 18px;" class="large text-primary">প্রজেক্ট </span></time>
+                        <div class="cbp_tmicon bg-secondary"><i class="zmdi zmdi-label"></i></div>
+                        <div class="cbp_tmlabel">
+                            <div class="row">
+                                {% for project in organisation.org_projects.all %}
+                                
+                                <div class="col-sm-12 col-md-6 col-lg-6 my-2">
+                                    <div class="card" style="">
+                
+                                        {% if project.project_image %}
+                                            <img class="card-img-top" src="{{ project.project_image.url }}" height="120px" alt="">
+                                            {% else %}
+                                            <img class="card-img-top" src="" height="120px" alt="">
                                         {% endif %}
-                                                                            
-                                    </div>
-                                    <div class="card-footer bg-white ">
-                                        <ul class="list-inline ">
-                                            <!--  <a class="text-info"  href="{{ project.get_absolute_url }}"><span class="badge badge-primary p-2">ইডিট</span></a> -->
-                                            <li class="list-inline-item my-2">
-                                                <a class="text-info"  href="{{ project.get_absolute_url }}/edit"><span class="badge badge-primary p-2">ইডিট</span></a>
-                                                
-                                            </li>
-                                            <li class="list-inline-item my-2">
-                                                <a class="text-danger" href="" data-toggle="modal" data-target="#exampleModalCenter{{project.id}}"><span class="badge badge-danger p-2">মুছে ফেলুন </span> </a>
-                                                
-                                            </li>
-                                            <li class="list-inline-item my-2 " style="float:right">
-                                                <a class="text-info " href="{{ project.get_absolute_url }}"><span class="badge badge-info p-2">সম্পুর্ন পড়ুন</span></a>
-                                            </li>
-                                        </ul>
-                                        
+                                        <div class="card-body" style="min-height: 200px;">
+                                            <h5 class="card-title">{{project.project_name|title}}</h5>
+                                            {% spaceless %}
+                                            <p class="card-text ">{{project.details|safe|truncatechars_html:50 }}</p>
+                                            {% endspaceless %}
+                                            
+                                            {% if project.status is not True %}
+                                            <p class="text-info " style="line-height: .5 rem;" >
+                                               <i class="fa fa-angle-double-right" aria-hidden="true" ></i>  আপনার প্রজেক্ট আমাদের টিম দ্রুত ভেরিফাই করবে,দয়া করে অপেক্ষা করুণ ।
+                                            </p>
+                                            {% endif %}
+                                                                                
+                                        </div>
+                                        <div class="card-footer bg-white ">
+                                            <ul class="list-inline ">
+                                                <!--  <a class="text-info"  href="{{ project.get_absolute_url }}"><span class="badge badge-primary p-2">ইডিট</span></a> -->
+                                                <li class="list-inline-item my-2">
+                                                    <a class="text-info"  href="{{ project.get_absolute_url }}/edit"><span class="badge badge-primary p-2">ইডিট</span></a>
+                                                    
+                                                </li>
+                                                <li class="list-inline-item my-2">
+                                                    <a class="text-danger" href="" data-toggle="modal" data-target="#exampleModalCenter{{project.id}}"><span class="badge badge-danger p-2">মুছে ফেলুন </span> </a>
+                                                    
+                                                </li>
+                                                <li class="list-inline-item my-2 " style="float:right">
+                                                    <a class="text-info " href="{{ project.get_absolute_url }}"><span class="badge badge-info p-2">সম্পুর্ন পড়ুন</span></a>
+                                                </li>
+                                            </ul>
+                                            
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <!-- modal -->
-                            <div class="modal fade" id="exampleModalCenter{{project.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <h5 class="modal-title" id="exampleModalLongTitle">{{project.project_name|title}}</h5>
-                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                      </button>
+    
+                                <!-- modal -->
+                                <div class="modal fade" id="exampleModalCenter{{project.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="exampleModalLongTitle">{{project.project_name|title}}</h5>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button>
+                                        </div>
+                                        <div class="modal-body">
+                                          আপনি কি আপনার প্রজেক্ট মুছে ফেলতে চান ? 
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal">না</button>
+                                          <form method="POST" action="{% url 'orgApplication:org_project_delete' pk=project.pk %}"> 
+                                            <!-- Security token by Django -->
+                                            {% csrf_token %} 
+                                            <button type="submit" class="btn btn-sm btn-danger"> হ্যাঁ </button>
+                                        </div>
+                                            
+                                        </form> 
+                                          
+                                      </div>
                                     </div>
-                                    <div class="modal-body">
-                                      আপনি কি আপনার প্রজেক্ট মুছে ফেলতে চান ? 
-                                    </div>
-                                    <div class="modal-footer">
-                                      <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal">না</button>
-                                      <form method="POST" action="{% url 'orgApplication:org_project_delete' pk=project.pk %}"> 
-                                        <!-- Security token by Django -->
-                                        {% csrf_token %} 
-                                        <button type="submit" class="btn btn-sm btn-danger"> হ্যাঁ </button>
-                                    </div>
-                                        
-                                    </form> 
-                                      
                                   </div>
-                                </div>
-                              </div>
-
-                            {% endfor %}
-                        </div> 
-                          
-                    </div>
-                </li>
-               {% endif %}
-               
-            </ul>  
+    
+                                {% endfor %}
+                            </div> 
+                              
+                        </div>
+                    </li>
+                   {% endif %}
+                   
+                </ul>  
+            </div>
         </div>
     </div>
 </div>

@@ -1,0 +1,106 @@
+<div class="row">
+    <div class="col-12">
+        <div class="swiper-container causes-slider">
+            <div class="swiper-wrapper">
+                {% if all_running_projects %}
+                {% for project in all_running_projects %}
+
+                <div class="swiper-slide">
+                    <div class="cause-wrap">
+                        <figure class="m-0 " style="border-bottom:1px solid #ff0">
+                            {% if project.project_image %}
+                            <img class="default-images project-images " src="{{ project.project_image.url }}"
+                                height="200" alt="">
+                            {% else %}
+                            <img class="default-images project-images-not" src="#" height="200" alt="">
+                            {% endif %}
+
+                            <div
+                                class="figure-overlay d-flex justify-content-center align-items-center position-absolute w-100 h-100">
+                                <a href="#" class="btn gradient-bg mr-2">দান করুন</a>
+                            </div><!-- .figure-overlay -->
+                        </figure>
+
+                        <div class="cause-content-wrap" style="min-height: 510px;">
+                            <header class="entry-header d-flex flex-wrap align-items-center">
+                                <h3 class="entry-title w-100 m-0"><a href="#">{{project.project_name}}</a>
+                                </h3>
+                                <p class="text-muted pt-1" style="">
+                                    {{project.selected_area}}
+                                </p>
+
+
+
+                            </header><!-- .entry-header -->
+
+                            <div class="entry-content mt-0">
+                                <p class="m-0 p text-dark">
+                                    {{project.details|safe|truncatechars:300}}
+                                </p>
+                            </div><!-- .entry-content -->
+
+                            <div class="fund-raised w-100">
+                                <div class="fund-raised-bar-1 barfiller">
+                                    <div class="tipWrap">
+                                        <span class="tip"></span>
+                                    </div>
+
+                                    <span class="fill" data-percentage="5">
+
+                                    </span>
+                                </div>
+
+
+                                <div
+                                    class="fund-raised-details d-flex flex-wrap justify-content-between align-items-center">
+
+                                    <div class="pt-5">
+                                        <p class="text-dark ml-0" style="font-size: 14px;">উত্তোলনের শেষ
+                                            তারিখ: {{project.end_date}}
+                                        </p>
+                                    </div>
+
+                                    <div class="fund-raised-goal mt-4 text-info">
+                                        {% if project.budget  %}
+                                        বাজেট : {{project.budget}} টাকা
+                                        {% else %}
+                                        বাজেট উল্লেখ নেই
+                                        {% endif %}
+                                    </div>
+
+
+
+                                </div><!-- .fund-raised-details -->
+                            </div><!-- .fund-raised -->
+                        </div><!-- .cause-content-wrap -->
+                    </div><!-- .cause-wrap -->
+                </div><!-- .swiper-slide -->
+                {% endfor %}
+                {%endif %}
+
+            </div><!-- .swiper-wrapper -->
+
+        </div><!-- .swiper-container -->
+
+        <div class="pagination-wrap position-absolute w-100">
+            <div class="container">
+                <div class="swiper-pagination"></div>
+            </div><!-- .container -->
+        </div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next flex justify-content-center align-items-center">
+            <span><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M1171 960q0 13-10 23l-466 466q-10 10-23 10t-23-10l-50-50q-10-10-10-23t10-23l393-393-393-393q-10-10-10-23t10-23l50-50q10-10 23-10t23 10l466 466q10 10 10 23z" />
+                </svg></span>
+        </div>
+
+        <div class="swiper-button-prev flex justify-content-center align-items-center">
+            <span><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M1203 544q0 13-10 23l-393 393 393 393q10 10 10 23t-10 23l-50 50q-10 10-23 10t-23-10l-466-466q-10-10-10-23t10-23l466-466q10-10 23-10t23 10l50 50q10 10 10 23z" />
+                </svg></span>
+        </div>
+    </div><!-- .col -->
+
+</div><!-- .row -->

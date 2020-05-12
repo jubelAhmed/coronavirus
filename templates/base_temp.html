@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
-<html lang="en">
+<html lang="bn">
 <head>
     <title> {% block title %} ত্রান বিতরন {% endblock title %} </title>
 
@@ -18,10 +18,10 @@
   
 
     <!-- ElegantFonts CSS -->
-    <link rel="stylesheet" href="{% static 'css/elegant-fonts.css' %} ">
+    <!-- <link rel="stylesheet" href="{% static 'css/elegant-fonts.css' %} "> -->
 
     <!-- themify-icons CSS -->
-    <link rel="stylesheet" href="{% static 'css/themify-icons.css' %} ">
+    <!-- <link rel="stylesheet" href="{% static 'css/themify-icons.css' %} "> -->
 
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="{% static 'css/swiper.min.css' %} ">
@@ -75,7 +75,8 @@
                                 
 
                                 <!-- <li class="{% if nbar == 'signin' %}current-menu-item{% endif %} "><a href="{% url 'news' %}"><i class="fa fa-rss pr-1"></i>প্রবেশ করুন</a></li> -->
-                                <li class=" {% if nbar == 'info' %}current-menu-item{% endif %}"><a href="{% url 'index' %}"><i class="fa fa-user-plus pr-1"></i>ওপেন সোর্স যোগদান</a></li>
+                                <!-- <li class=" {% if nbar == 'info' %}current-menu-item{% endif %}"><a href="{% url 'index' %}"><i class="fa fa-user-plus pr-1"></i>ওপেন সোর্স যোগদান</a></li> -->
+
                                 {% if  user.is_authenticated %}
                                 <li class=" {% if nbar == 'logout' %}current-menu-item{% endif %}"><a href="{% url 'logout' %}" class="text-danger"><i class="fa fa-sign-out-alt pr-1"></i>লগ আউট</a></li>
                                 

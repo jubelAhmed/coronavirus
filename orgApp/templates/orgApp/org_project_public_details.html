@@ -1,0 +1,64 @@
+{% extends 'base_temp.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block script %}
+<link rel="stylesheet" href="{% static 'orgApp/css/blog_profile.css' %}">
+<link rel="stylesheet" href="{% static 'orgApp/css/profile_details.css' %}">
+
+
+{% endblock script %}
+
+
+{% block content %}
+
+{% include "orgApp/org_profile_include.html" %}
+<div class="">
+    <div class="container ">
+        <div class="project-details py-5 px-3 " style="border-right:1px solid #E9ECEF;border-left:1px solid #E9ECEF;">
+            
+            <div class="row">
+    
+                <div class="col-sm-12 text-center">
+                    <div class="text-center">
+                        {% if single_project.project_image %}
+                        <img width="400" height="200" src="{{single_project.project_image.url}}" class="rounded" alt="project_image">
+                        {% endif %}
+                    </div>
+                    <h2>{{single_project.project_name}}</h2>
+                    {% if single_project.selected_area %}
+                    <p class="text-muted"> প্রস্তাবিত এলাকা : {{single_project.selected_area}}</p>
+                    {% endif %}
+                </div>
+                <div class="col-sm-12">
+                    <p>{{single_project.details|safe}}</p>
+                </div>
+                <div class="col-sm-12">
+                    <div class="row ">
+                        <div class="col-sm-6 pt-3">
+                            <p class="text-muted">অনুদানের শেষ তারিখ : {{single_project.end_date}}</p>
+                        </div>
+                        <div class="col-sm-6 pt-3 text-right">
+                            {% if single_project.budget %}
+                            <p class="text-muted"> বাজেট : {{single_project.budget}}</p>
+                            {% else %}
+                            <p class="text-muted"> বাজেট : উল্লেখ নাই</p>
+                            {% endif %}
+                        </div>
+                    </div>
+    
+                </div>
+    
+    
+            </div>
+    
+            <!-- all similler projects -->
+
+            
+            
+        </div>
+        
+    </div>
+</div>
+
+{% endblock content %}
