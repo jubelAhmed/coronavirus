@@ -164,11 +164,11 @@ def self_org(request: HttpRequest):
                 details.organisation = new_org
                 details.save()
                 messages.add_message(request, messages.SUCCESS, "রেজিস্ট্রেশন করার জন্যে আপনাকে ধন্যবাদ")
-                messages.add_message(request, messages.SUCCESS, "আপানার প্রতিষ্ঠান আমাদের এডমিন গ্রুপ যাচাই করবে, আপনার সকল তথ্য সঠিক হলে আমরা অনুমোদন দিব, আপনাকে কিছুক্ষন অপেক্ষা করতে হবে")
+                messages.add_message(request, messages.SUCCESS, "আপানার প্রতিষ্ঠান আমাদের এডমিন গ্রুপ যাচাই করবে, আপনার সকল তথ্য সঠিক হলে আমরা অনুমোদন দিব, আপনার প্রোফাইলে প্রবেশ করুণ <a href=\"{% url 'orgApplication:org_profile_detail' pk=new_org.pk  %}\" ")
                 return HttpResponseRedirect(reverse("orgApplication:self_org"))
         # context['errorMsg'] = 'Not new user'
         return render(request, 'orgApp/selfOrg.html', context)
-
+ 
 
 
 @login_required

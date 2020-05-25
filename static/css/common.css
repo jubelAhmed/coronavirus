@@ -1,11 +1,11 @@
 .box {
-    width: 350px;
+    width: 340px;
     box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
 
-@media screen and (min-width: 480px) {
+@media screen and (max-width: 480px) {
   .box {
-    width: 250px !important;
+    width: 370px !important;
     box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     
   }

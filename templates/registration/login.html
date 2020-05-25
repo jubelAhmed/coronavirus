@@ -3,39 +3,44 @@
 {% load crispy_forms_tags %}
 
 {% block script %}
-   
+
 
 {% endblock script %}
 
 {% block content %}
 
-    <div class="jumbotron bg-white">
-        <div class="row justify-content-center mt-1 ">
-            <div class="col-sm-4 box">
-                <h5 class=" text-center text-info mt-5">আপনার একাউন্টে প্রবেশ করুণ</h5>
-                <hr class="mt-0 mb-4">
-                <form method="post">
-                    {% csrf_token %}
-                    {{ form|crispy }}
-        
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <button type="submit" class="btn btn-success text-center p-3">প্রবেশ করুণ</button>
+<div class="bg-white mt-3">
+    <div class="row justify-content-center">
+        <div class="col-sm-4 col-md-6 col-lg-4 m-3 animatedParent">
+            <div class="card animated fadeInLeft">
+                <div class="card-body">
+                    <h5 class=" text-center text-info mt-5">আপনার একাউন্টে প্রবেশ করুণ</h5>
+                    <hr class="mt-0 mb-4">
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <button type="submit" class="btn bg-info text-dark border-dark text-center p-3" style="font-size: 17px;">প্রবেশ করুণ</button>
+                                <a class="text-danger ml-5" style="text-decoration: underline;"
+                                    href="{% url 'password_reset' %}">পাসওয়ার্ড ভুলে গেছেন ?</a>
+                            </div>
+
                         </div>
-                        <div class="col-sm-6">
-                            <p class="pt-2" ><a  class="text-danger" style="text-decoration: underline;" href="{% url 'password_reset' %}">পাসওয়ার্ড ভুলে গেছেন ?</a></p>
-        
-                        </div>
-                    </div>
-                    <p class=" p-2 mt-4 text-muted"> 
-                        আপনার একাউন্ট না থাকলে তৈরি করুন ... <a class="text-primary pl-3" style="text-decoration: underline;" href="{% url 'signup' %}">একাউন্ট তৈরি করুন</a>
-                    </p>
-        
-                   
-        
-                </form>
+                        <p class=" p-2 mt-4 text-muted">
+                            আপনার একাউন্ট না থাকলে <a class="text-primary pl-3" style="text-decoration: underline;"
+                                href="{% url 'signup' %}">একাউন্ট তৈরি করুন</a>
+                        </p>
+
+
+
+                    </form>
+                </div>
             </div>
+
         </div>
     </div>
+</div>
 
 {% endblock %}

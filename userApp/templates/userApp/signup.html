@@ -2,51 +2,56 @@
 {% load crispy_forms_tags %}
 
 {% block script  %}
-    <style>
-        #hint_id_password1{
-            display: none;
-        }
-        .asteriskField{
-            color:red;
-        }
-       
-    </style>
+<style>
+    #hint_id_password1 {
+        display: none;
+    }
+
+    .asteriskField {
+        color: red;
+    }
+</style>
 {% endblock script  %}
 
 {% block content %}
 
-   <div class="container">
-       <div class=" bg-white">
-           <div class="row justify-content-center pt-5">
+<div class="">
+    <div class=" bg-white">
+        <div class="row justify-content-center mt-3 ">
 
-                <div class="col-sm-6 jumbotron bg-white text-success  box" style="">
-                    
-                        <h5 class="text-danger text-center pb-3"><i class="fas fa-arrow-alt-circle-right"></i> রেজিস্ট্রেশন করুন ।</h5>
-                  
-                    
-                    <form method="post">
-                        {% csrf_token %}
-                        {{ form.email|as_crispy_field }}
-                        <div class="row">
-                            <div class="col-sm-6">
-                                {{ form.password1|as_crispy_field }}
+            <div class="col-sm-12 col-lg-4 col-md-6  bg-white text-success m-2 animatedParent" style="">
+                <div class="card animated fadeInDown">
+                    <div class="card-body">
+                        <h5 class="text-danger text-center pb-3"><i class="fas fa-arrow-alt-circle-right"></i> রেজিস্ট্রেশন করুন
+                            ।</h5>
+        
+        
+                        <form method="post">
+                            {% csrf_token %}
+                            {{ form.email|as_crispy_field }}
+                           
+                            {{ form.password1|as_crispy_field }}
+                        
+                            {{  form.password2|as_crispy_field }}
+                                  
+                            <div>
+                                <input class="btn btn-success p-3 " type="submit" value="রেজিস্ট্রেশন">
+                                <p class="text-muted mt-2 text-right" style="font-size: 14px;">
+                                    আপনার একাউন্ট থাকলে <a class="text-primary ml-1" style="text-decoration: underline;"
+                                        href="{% url 'login' %}">সাইন ইন করুন</a>
+                                </p>
                             </div>
-                            <div class="col-sm-6">
-                                {{  form.password2|as_crispy_field }}
-                            </div>
-                            
-                        </div>
-    
-                        <input class="btn btn-success p-3" type="submit" value="রেজিস্ট্রেশন">
-                      </form>
-                      <p class=" p-2 mt-4 text-muted"> 
-                        আপনার একাউন্ট থাকলে সাইন ইন করুন ... <a class="text-primary pl-3" style="text-decoration: underline;" href="{% url 'login' %}">সাইন ইন করুন</a>
-                    </p>
+                           
+                        </form>
+                        
+                    </div>
                 </div>
+                
+            </div>
 
-           </div>
-       </div>
-   </div>
+        </div>
+    </div>
+</div>
 
 
 {% endblock %}

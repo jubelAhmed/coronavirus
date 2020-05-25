@@ -385,10 +385,14 @@ a:hover, a:active {
     }
 
     .hero-content-overlay p,
-    .hero-slider .pagination-wrap,
+    
     .hero-slider .swiper-button-next,
     .hero-slider .swiper-button-prev{
         display: none;
+    }
+
+    .hero-slider .pagination-wrap{
+        display: inline-block;
     }
 
     .hero-content-overlay footer{
@@ -2001,12 +2005,12 @@ ul.tabs-nav .tab-nav.active {
     position: relative;
 
     padding-top:96px;
-    padding-left:90px;
-    padding-right:90px;
+    padding-left:50px;
+    padding-right:50px;
     padding-bottom:20px;
     font-weight: 500;
     color: #929191;
-   
+    background: url("/static/images/foot-bg.jpg") no-repeat center;
     background-size: cover;
     z-index: 99;
 }

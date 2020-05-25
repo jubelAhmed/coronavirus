@@ -96,43 +96,45 @@
                 </ul>
             </div>
 
-
-            <div class="row pt-5 justify-content-center ">
-                <div class="col-12 col-md-6 col-lg-4 mt-4 mt-lg-0 ">
-                    <div class="card mx-2" style="height:10rem ;border:2px double blue">
-                        <div class="card-body">
-                            <p class="static-p" style="color:blue;">যে প্রতিষ্ঠান গুলো সামাজিক
-                                সহায়তা করে থাকে ।
-                                বিপদে পাশে দাঁড়ায়
-                                এবং বর্তমানে করোনা মোকাবিলার জন্যে এই প্রতিষ্ঠান গুলো উদ্যোগ নিয়েছে । </p>
+            <div class="animatedParent">
+                <div class="row pt-5 justify-content-center animated fadeInLeft">
+                    <div class="col-12 col-md-6 col-lg-4 mt-4 mt-lg-0 ">
+                        <div class="card mx-2 " style="height:11rem ;border:2px double blue">
+                            <div class="card-body">
+                                <p class="static-p" style="color:blue;">যে প্রতিষ্ঠান গুলো সামাজিক
+                                    সহায়তা করে থাকে ।
+                                    বিপদে পাশে দাঁড়ায়
+                                    এবং বর্তমানে করোনা মোকাবিলার জন্যে এই প্রতিষ্ঠান গুলো উদ্যোগ নিয়েছে । </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-12 col-md-6 col-lg-4 mt-4 mt-lg-0 align-self-center">
-                    <div class="card mx-2" style="height:10rem;border:2px double green">
-                        <div class="card-body">
-
-                            <p class="static-p" style="color:green;">আপনারা এই সংস্থা গুলোকে সহায়তা করুন যাতে তারা
-                                যথা সময়ে মানুষের
-                                কাছে পৌঁছে দিতে পারে । </p>
+    
+                    <div class="col-12 col-md-6 col-lg-4 mt-4 mt-lg-0 align-self-center ">
+                        <div class="card mx-2 delay-250 " style="height:11rem;border:2px double green">
+                            <div class="card-body">
+    
+                                <p class="static-p" style="color:green;">আপনারা এই সংস্থা গুলোকে সহায়তা করুন যাতে তারা
+                                    যথা সময়ে মানুষের
+                                    কাছে পৌঁছে দিতে পারে । </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4 mt-4 mt-lg-0  align-self-center">
-                    <div class="card mx-2" style="height:10rem;border:2px double orange">
-                        <div class="card-body">
-
-                            <p class="static-p" style="color:orange;">
-                                সংস্থা গুলোর প্রয়োজনীও তথ্য যাচাই করে আপানারা নিজ উদ্যোগে পাশে দাড়ান। আপানারা দান করতে
-                                চাইলে সংস্থা গুলোর ফোন নাম্বারে যোগাযোগ করে সঠিক তথ্য যাচাই করে নিন।
-                            </p>
+                    <div class="col-12 col-md-6 col-lg-4 mt-4 mt-lg-0  align-self-center ">
+                        <div class="card mx-2 " style="height:11rem;border:2px double orange">
+                            <div class="card-body">
+    
+                                <p class="static-p" style="color:orange;">
+                                    সংস্থা গুলোর প্রয়োজনীও তথ্য যাচাই করে আপানারা নিজ উদ্যোগে পাশে দাড়ান। আপানারা দান করতে
+                                    চাইলে সংস্থা গুলোর ফোন নাম্বারে যোগাযোগ করে সঠিক তথ্য যাচাই করে নিন।
+                                </p>
+                            </div>
                         </div>
                     </div>
+    
                 </div>
-
+    
             </div>
-
+          
         </div>
     </div>
 
@@ -153,11 +155,11 @@
             <div class="row">
                 <div class="col-12">
                     <div class="swiper-container causes-slider">
-                        <div class="swiper-wrapper">
+                        <div class="swiper-wrapper ">
                             {% if all_running_projects %}
                             {% for project in all_running_projects %}
 
-                            <div class="swiper-slide">
+                            <div class="swiper-slide ">
                                 <div class="cause-wrap">
                                     <figure class="m-0 " style="border-bottom:1px solid #ff0">
                                         {% if project.project_image %}
@@ -331,21 +333,26 @@
                             <button id="id_orgsearch_btn" type="submit"
                                 style="border: 1px solid rgb(240, 15, 146);letter-spacing:1px;background-color:#FF5A00"
                                 class="btn-success btn  mt-4 p-2 ">অনুসন্ধান</button>
+                                <button onClick="window.location.reload();" id="id_orgsearch_btn" type="button"
+                                    style="border: 1px solid rgb(240, 15, 146);letter-spacing:1px;background-color:green"
+                                    class="btn-success btn  mt-4 p-2 ">সকল</button>
+                                
                         </div>
+                        
 
                     </div>
                 </form>
             </div>
 
             <!-- all org list -->
-            <div class="org-list mt-5" id="id_orglist">
+            <div class="org-list mt-5 " id="id_orglist">
                 <div class="row ">
                     {% if organisation_list %}
                     {% for org in organisation_list %}
 
-                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 my-2">
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 my-2  animatedParent">
 
-                        <div class="card shadow border-left-info "
+                        <div class="card shadow border-left-info animated fadeInUp"
                             style="border-radius:10px; border-left:5px solid #87c1f5;border-right:5px solid #87c1f5;min-height: 350px;">
                             <div class="card-body">
                                 <h4 class="card-title text-primary"> {{ org.name}}</h4>
@@ -516,7 +523,7 @@
     <div class="footer-widgets">
         <div class="container">
             <div class="row justify-content-between">
-                <div class="col-12 col-md-6 col-lg-3">
+                <div class="col-12 col-md-6 col-lg-6">
                     <div class="foot-about">
                         <!-- <h2><a class="foot-logo" href="#"><img src="images/foot-logo.png" alt=""></a></h2> -->
 
@@ -534,26 +541,25 @@
                 
                 <div class="col-12 col-md-6 col-lg-3 mt-5 mt-md-0 ">
                     <div class="foot-contact">
-                        <h2>যোগাযোগ</h2>
-
+                        <h4 class="text-primary">যোগাযোগ</h4>
                         <ul>
                             <li><i class="fa fa-phone"></i><span>+88 0130704781</span></li>
-                            <li><i class="fa fa-envelope"></i><span>osbangla@.gmail.com</span></li>
+                            <li><i class="fa fa-envelope"></i><span>jubel8180@gmail.com</span></li>
                             <li><i class="fa fa-map-marker"></i><span>Dhaka Bangladesh</span></li>
                         </ul>
                     </div><!-- .foot-contact -->
 
                 </div><!-- .col -->
             </div><!-- .row -->
-            <div class="pt-4 text-right">
+            <div class="pt-4 text-center">
                 <span class="text-muted" style="font-size: 14px;"> এখানে ওপেন সোর্স ডেভেলপার দের আমন্ত্রন রইল । কেউ আমাদের সাথে যোগ দিতে চাইলে এখানে যোগাযোগ করূন </span>
-                <a href="{% url 'index' %}"><button class="btn btn-sm btn-success">ওপেন সোর্স যোগদান
-                </button></a>
+                <a class="text-success px-2" style="text-decoration: underline;font-size: 14px;" href="{% url 'index' %}">ওপেন সোর্স যোগদান
+                </a>
             </div>
         </div><!-- .container -->
     </div><!-- .footer-widgets -->
 
-    <div class="footer-bar">
+    <div class="footer-bar m-0">
         <div class="container">
             <div class="row">
                 <div class="col-12">
