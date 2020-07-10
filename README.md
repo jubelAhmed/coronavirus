@@ -12,7 +12,7 @@ https://sohayota.herokuapp.com/
 
 # All Video In the Youtube Playlist  :
 
-[![Youtube Corona]](https://www.youtube.com/playlist?list=PLSQ_pVMGfBaPipBOXnCze267aS8EPxe8_)
+[[Youtube Video]](https://www.youtube.com/playlist?list=PLSQ_pVMGfBaPipBOXnCze267aS8EPxe8_)
 
 
 1.  How to install coronavirus project
@@ -37,13 +37,13 @@ Name : Jubel Ahmed
 Repo:
 https://github.com/jubelAhmed/coronavirus
 Apps:
-https://corunavirus19.herokuapp.com/coruna/
+https://sohayota.herokuapp.com/
 
 Name : Sushen Biswas
 Repo: 
 https://github.com/sushen/coronavirus/
 Apps :
-https://sohayota.herokuapp.com/
+https://coronavirusbd.herokuapp.com/coruna/
 
 Name: Kamrul Hasan
 
