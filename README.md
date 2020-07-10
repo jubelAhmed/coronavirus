@@ -1,21 +1,18 @@
-# coronavirus
-I hope this project bring the necessary need what we need to solve corona virus problem.
+
+I hope this project bring the necessary need what we need to solve our country current crisis problem like corona virus.
 
 This is the full documentation of our Project :
 
 https://coronavirus-1.gitbook.io/general-knowledge/
 
-#This is our bata apps:
-
-https://coronavirus-stagibg.herokuapp.com/
 
 #This is our live apps :
 
-https://coronavirusbd.herokuapp.com/
+https://sohayota.herokuapp.com/
 
 # All Video In the Youtube Playlist  :
 
-[![Youtube Corona](https://user-images.githubusercontent.com/4492335/78470086-6ee3e080-7748-11ea-9a54-f224b28dc42d.png)](https://www.youtube.com/playlist?list=PLSQ_pVMGfBaPipBOXnCze267aS8EPxe8_)
+[![Youtube Corona]](https://www.youtube.com/playlist?list=PLSQ_pVMGfBaPipBOXnCze267aS8EPxe8_)
 
 
 1.  How to install coronavirus project
@@ -35,19 +32,18 @@ https://coronavirusbd.herokuapp.com/
 
 # Our team and There Apps  :
 
-Name : Sushen Biswas
-
-Repo: 
-https://github.com/sushen/coronavirus/
-Apps :
-https://coronavirusbd.herokuapp.com/coruna/
-
 Name : Jubel Ahmed
 
 Repo:
 https://github.com/jubelAhmed/coronavirus
 Apps:
 https://corunavirus19.herokuapp.com/coruna/
+
+Name : Sushen Biswas
+Repo: 
+https://github.com/sushen/coronavirus/
+Apps :
+https://sohayota.herokuapp.com/
 
 Name: Kamrul Hasan
 
